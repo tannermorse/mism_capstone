@@ -1,0 +1,638 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		262F53B8C05B8003D83FB938 /* Pods_mism_capstone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2D0129ED85CDA0E68E1300A /* Pods_mism_capstone.framework */; };
+		B0833357CF1B7A91C04198C0 /* Pods_mism_capstoneTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D3F65BDE4E6CB1D36425A83 /* Pods_mism_capstoneTests.framework */; };
+		F32BEDBF23C38C5F00E1C50E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32BEDBE23C38C5F00E1C50E /* AppDelegate.swift */; };
+		F32BEDC323C38C5F00E1C50E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32BEDC223C38C5F00E1C50E /* MainViewController.swift */; };
+		F32BEDC623C38C5F00E1C50E /* MainViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F32BEDC423C38C5F00E1C50E /* MainViewController.storyboard */; };
+		F32BEDC923C38C5F00E1C50E /* mism_capstone.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F32BEDC723C38C5F00E1C50E /* mism_capstone.xcdatamodeld */; };
+		F32BEDCB23C38C6100E1C50E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F32BEDCA23C38C6100E1C50E /* Assets.xcassets */; };
+		F32BEDCE23C38C6100E1C50E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F32BEDCC23C38C6100E1C50E /* LaunchScreen.storyboard */; };
+		F32BEDD923C38C6100E1C50E /* mism_capstoneTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32BEDD823C38C6100E1C50E /* mism_capstoneTests.swift */; };
+		F32BEDE723C38F8000E1C50E /* +UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32BEDE623C38F8000E1C50E /* +UIColor.swift */; };
+		F32BEDE923C38F8400E1C50E /* +UIStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32BEDE823C38F8400E1C50E /* +UIStackView.swift */; };
+		F32BEDEB23C38F8900E1C50E /* +UIStoryboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32BEDEA23C38F8900E1C50E /* +UIStoryboard.swift */; };
+		F32BEDED23C38F8C00E1C50E /* +UIViewAnchor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32BEDEC23C38F8C00E1C50E /* +UIViewAnchor.swift */; };
+		F36C75A723C3990E009BDA73 /* ScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36C75A623C3990E009BDA73 /* ScheduleViewController.swift */; };
+		F36C75A923C39940009BDA73 /* ScheduleViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F36C75A823C39940009BDA73 /* ScheduleViewController.storyboard */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F32BEDD523C38C6100E1C50E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F32BEDB323C38C5F00E1C50E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F32BEDBA23C38C5F00E1C50E;
+			remoteInfo = mism_capstone;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		58A116D41A7C0FA08235FE0B /* Pods-mism_capstoneTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mism_capstoneTests.release.xcconfig"; path = "Target Support Files/Pods-mism_capstoneTests/Pods-mism_capstoneTests.release.xcconfig"; sourceTree = "<group>"; };
+		6048898DF1D9AF13346CAEC7 /* Pods-mism_capstone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mism_capstone.debug.xcconfig"; path = "Target Support Files/Pods-mism_capstone/Pods-mism_capstone.debug.xcconfig"; sourceTree = "<group>"; };
+		86E76D7F7F7591A411D759B6 /* Pods-mism_capstoneTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mism_capstoneTests.debug.xcconfig"; path = "Target Support Files/Pods-mism_capstoneTests/Pods-mism_capstoneTests.debug.xcconfig"; sourceTree = "<group>"; };
+		9D3F65BDE4E6CB1D36425A83 /* Pods_mism_capstoneTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_mism_capstoneTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C401E5C19BBC804E6E636FBD /* Pods-mism_capstone.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mism_capstone.release.xcconfig"; path = "Target Support Files/Pods-mism_capstone/Pods-mism_capstone.release.xcconfig"; sourceTree = "<group>"; };
+		F2D0129ED85CDA0E68E1300A /* Pods_mism_capstone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_mism_capstone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F32BEDBB23C38C5F00E1C50E /* Thrive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Thrive.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F32BEDBE23C38C5F00E1C50E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		F32BEDC223C38C5F00E1C50E /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		F32BEDC523C38C5F00E1C50E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainViewController.storyboard; sourceTree = "<group>"; };
+		F32BEDC823C38C5F00E1C50E /* mism_capstone.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = mism_capstone.xcdatamodel; sourceTree = "<group>"; };
+		F32BEDCA23C38C6100E1C50E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F32BEDCD23C38C6100E1C50E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		F32BEDCF23C38C6100E1C50E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F32BEDD423C38C6100E1C50E /* mism_capstoneTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = mism_capstoneTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F32BEDD823C38C6100E1C50E /* mism_capstoneTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mism_capstoneTests.swift; sourceTree = "<group>"; };
+		F32BEDDA23C38C6100E1C50E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F32BEDE623C38F8000E1C50E /* +UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "+UIColor.swift"; sourceTree = "<group>"; };
+		F32BEDE823C38F8400E1C50E /* +UIStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "+UIStackView.swift"; sourceTree = "<group>"; };
+		F32BEDEA23C38F8900E1C50E /* +UIStoryboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "+UIStoryboard.swift"; sourceTree = "<group>"; };
+		F32BEDEC23C38F8C00E1C50E /* +UIViewAnchor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "+UIViewAnchor.swift"; sourceTree = "<group>"; };
+		F36C75A623C3990E009BDA73 /* ScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewController.swift; sourceTree = "<group>"; };
+		F36C75A823C39940009BDA73 /* ScheduleViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ScheduleViewController.storyboard; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F32BEDB823C38C5F00E1C50E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				262F53B8C05B8003D83FB938 /* Pods_mism_capstone.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F32BEDD123C38C6100E1C50E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B0833357CF1B7A91C04198C0 /* Pods_mism_capstoneTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2913BE27EC441C30275589AC /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6048898DF1D9AF13346CAEC7 /* Pods-mism_capstone.debug.xcconfig */,
+				C401E5C19BBC804E6E636FBD /* Pods-mism_capstone.release.xcconfig */,
+				86E76D7F7F7591A411D759B6 /* Pods-mism_capstoneTests.debug.xcconfig */,
+				58A116D41A7C0FA08235FE0B /* Pods-mism_capstoneTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		55E150C0DDE9D7C9DFF78A07 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F2D0129ED85CDA0E68E1300A /* Pods_mism_capstone.framework */,
+				9D3F65BDE4E6CB1D36425A83 /* Pods_mism_capstoneTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F32BEDB223C38C5F00E1C50E = {
+			isa = PBXGroup;
+			children = (
+				F32BEDBD23C38C5F00E1C50E /* mism_capstone */,
+				F32BEDD723C38C6100E1C50E /* mism_capstoneTests */,
+				F32BEDBC23C38C5F00E1C50E /* Products */,
+				2913BE27EC441C30275589AC /* Pods */,
+				55E150C0DDE9D7C9DFF78A07 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		F32BEDBC23C38C5F00E1C50E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F32BEDBB23C38C5F00E1C50E /* Thrive.app */,
+				F32BEDD423C38C6100E1C50E /* mism_capstoneTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F32BEDBD23C38C5F00E1C50E /* mism_capstone */ = {
+			isa = PBXGroup;
+			children = (
+				F36C75AA23C39C6F009BDA73 /* Scenes */,
+				F36C75AB23C39DD3009BDA73 /* AppLaunchHelpers */,
+				F32BEDE523C38F7400E1C50E /* Extensions */,
+				F32BEDCA23C38C6100E1C50E /* Assets.xcassets */,
+				F32BEDCF23C38C6100E1C50E /* Info.plist */,
+				F32BEDC723C38C5F00E1C50E /* mism_capstone.xcdatamodeld */,
+			);
+			path = mism_capstone;
+			sourceTree = "<group>";
+		};
+		F32BEDD723C38C6100E1C50E /* mism_capstoneTests */ = {
+			isa = PBXGroup;
+			children = (
+				F32BEDD823C38C6100E1C50E /* mism_capstoneTests.swift */,
+				F32BEDDA23C38C6100E1C50E /* Info.plist */,
+			);
+			path = mism_capstoneTests;
+			sourceTree = "<group>";
+		};
+		F32BEDE523C38F7400E1C50E /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				F32BEDE623C38F8000E1C50E /* +UIColor.swift */,
+				F32BEDE823C38F8400E1C50E /* +UIStackView.swift */,
+				F32BEDEA23C38F8900E1C50E /* +UIStoryboard.swift */,
+				F32BEDEC23C38F8C00E1C50E /* +UIViewAnchor.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		F32BEDF023C3916700E1C50E /* MainViewControllerScene */ = {
+			isa = PBXGroup;
+			children = (
+				F32BEDC223C38C5F00E1C50E /* MainViewController.swift */,
+				F32BEDC423C38C5F00E1C50E /* MainViewController.storyboard */,
+			);
+			path = MainViewControllerScene;
+			sourceTree = "<group>";
+		};
+		F36C75A523C398DC009BDA73 /* ScheduleViewControllerScene */ = {
+			isa = PBXGroup;
+			children = (
+				F36C75A623C3990E009BDA73 /* ScheduleViewController.swift */,
+				F36C75A823C39940009BDA73 /* ScheduleViewController.storyboard */,
+			);
+			path = ScheduleViewControllerScene;
+			sourceTree = "<group>";
+		};
+		F36C75AA23C39C6F009BDA73 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				F32BEDF023C3916700E1C50E /* MainViewControllerScene */,
+				F36C75A523C398DC009BDA73 /* ScheduleViewControllerScene */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		F36C75AB23C39DD3009BDA73 /* AppLaunchHelpers */ = {
+			isa = PBXGroup;
+			children = (
+				F32BEDBE23C38C5F00E1C50E /* AppDelegate.swift */,
+				F32BEDCC23C38C6100E1C50E /* LaunchScreen.storyboard */,
+			);
+			path = AppLaunchHelpers;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F32BEDBA23C38C5F00E1C50E /* mism_capstone */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F32BEDDD23C38C6100E1C50E /* Build configuration list for PBXNativeTarget "mism_capstone" */;
+			buildPhases = (
+				F23151C1B5E5FB78D06CAD5F /* [CP] Check Pods Manifest.lock */,
+				F32BEDB723C38C5F00E1C50E /* Sources */,
+				F32BEDB823C38C5F00E1C50E /* Frameworks */,
+				F32BEDB923C38C5F00E1C50E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = mism_capstone;
+			productName = mism_capstone;
+			productReference = F32BEDBB23C38C5F00E1C50E /* Thrive.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F32BEDD323C38C6100E1C50E /* mism_capstoneTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F32BEDE023C38C6100E1C50E /* Build configuration list for PBXNativeTarget "mism_capstoneTests" */;
+			buildPhases = (
+				10E2FB8A314BB0E93B552F20 /* [CP] Check Pods Manifest.lock */,
+				F32BEDD023C38C6100E1C50E /* Sources */,
+				F32BEDD123C38C6100E1C50E /* Frameworks */,
+				F32BEDD223C38C6100E1C50E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F32BEDD623C38C6100E1C50E /* PBXTargetDependency */,
+			);
+			name = mism_capstoneTests;
+			productName = mism_capstoneTests;
+			productReference = F32BEDD423C38C6100E1C50E /* mism_capstoneTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F32BEDB323C38C5F00E1C50E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1130;
+				LastUpgradeCheck = 1130;
+				ORGANIZATIONNAME = "Tanner Morse";
+				TargetAttributes = {
+					F32BEDBA23C38C5F00E1C50E = {
+						CreatedOnToolsVersion = 11.3;
+					};
+					F32BEDD323C38C6100E1C50E = {
+						CreatedOnToolsVersion = 11.3;
+						TestTargetID = F32BEDBA23C38C5F00E1C50E;
+					};
+				};
+			};
+			buildConfigurationList = F32BEDB623C38C5F00E1C50E /* Build configuration list for PBXProject "mism_capstone" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F32BEDB223C38C5F00E1C50E;
+			productRefGroup = F32BEDBC23C38C5F00E1C50E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F32BEDBA23C38C5F00E1C50E /* mism_capstone */,
+				F32BEDD323C38C6100E1C50E /* mism_capstoneTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F32BEDB923C38C5F00E1C50E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F36C75A923C39940009BDA73 /* ScheduleViewController.storyboard in Resources */,
+				F32BEDCE23C38C6100E1C50E /* LaunchScreen.storyboard in Resources */,
+				F32BEDCB23C38C6100E1C50E /* Assets.xcassets in Resources */,
+				F32BEDC623C38C5F00E1C50E /* MainViewController.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F32BEDD223C38C6100E1C50E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		10E2FB8A314BB0E93B552F20 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-mism_capstoneTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F23151C1B5E5FB78D06CAD5F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-mism_capstone-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F32BEDB723C38C5F00E1C50E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F32BEDC923C38C5F00E1C50E /* mism_capstone.xcdatamodeld in Sources */,
+				F32BEDE723C38F8000E1C50E /* +UIColor.swift in Sources */,
+				F32BEDED23C38F8C00E1C50E /* +UIViewAnchor.swift in Sources */,
+				F36C75A723C3990E009BDA73 /* ScheduleViewController.swift in Sources */,
+				F32BEDC323C38C5F00E1C50E /* MainViewController.swift in Sources */,
+				F32BEDE923C38F8400E1C50E /* +UIStackView.swift in Sources */,
+				F32BEDEB23C38F8900E1C50E /* +UIStoryboard.swift in Sources */,
+				F32BEDBF23C38C5F00E1C50E /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F32BEDD023C38C6100E1C50E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F32BEDD923C38C6100E1C50E /* mism_capstoneTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F32BEDD623C38C6100E1C50E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F32BEDBA23C38C5F00E1C50E /* mism_capstone */;
+			targetProxy = F32BEDD523C38C6100E1C50E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		F32BEDC423C38C5F00E1C50E /* MainViewController.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F32BEDC523C38C5F00E1C50E /* Base */,
+			);
+			name = MainViewController.storyboard;
+			sourceTree = "<group>";
+		};
+		F32BEDCC23C38C6100E1C50E /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F32BEDCD23C38C6100E1C50E /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F32BEDDB23C38C6100E1C50E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		F32BEDDC23C38C6100E1C50E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F32BEDDE23C38C6100E1C50E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6048898DF1D9AF13346CAEC7 /* Pods-mism_capstone.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = TK2K99QN97;
+				INFOPLIST_FILE = mism_capstone/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "tanner.mism-capstone";
+				PRODUCT_NAME = Thrive;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F32BEDDF23C38C6100E1C50E /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C401E5C19BBC804E6E636FBD /* Pods-mism_capstone.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = TK2K99QN97;
+				INFOPLIST_FILE = mism_capstone/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "tanner.mism-capstone";
+				PRODUCT_NAME = Thrive;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		F32BEDE123C38C6100E1C50E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 86E76D7F7F7591A411D759B6 /* Pods-mism_capstoneTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = TK2K99QN97;
+				INFOPLIST_FILE = mism_capstoneTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "tanner.mism-capstoneTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/mism_capstone.app/mism_capstone";
+			};
+			name = Debug;
+		};
+		F32BEDE223C38C6100E1C50E /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 58A116D41A7C0FA08235FE0B /* Pods-mism_capstoneTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = TK2K99QN97;
+				INFOPLIST_FILE = mism_capstoneTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "tanner.mism-capstoneTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/mism_capstone.app/mism_capstone";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F32BEDB623C38C5F00E1C50E /* Build configuration list for PBXProject "mism_capstone" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F32BEDDB23C38C6100E1C50E /* Debug */,
+				F32BEDDC23C38C6100E1C50E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F32BEDDD23C38C6100E1C50E /* Build configuration list for PBXNativeTarget "mism_capstone" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F32BEDDE23C38C6100E1C50E /* Debug */,
+				F32BEDDF23C38C6100E1C50E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F32BEDE023C38C6100E1C50E /* Build configuration list for PBXNativeTarget "mism_capstoneTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F32BEDE123C38C6100E1C50E /* Debug */,
+				F32BEDE223C38C6100E1C50E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		F32BEDC723C38C5F00E1C50E /* mism_capstone.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				F32BEDC823C38C5F00E1C50E /* mism_capstone.xcdatamodel */,
+			);
+			currentVersion = F32BEDC823C38C5F00E1C50E /* mism_capstone.xcdatamodel */;
+			path = mism_capstone.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = F32BEDB323C38C5F00E1C50E /* Project object */;
+}
