@@ -11,17 +11,18 @@
         <!--Schedule View Controller-->
         <scene sceneID="OAx-ET-Ixp">
             <objects>
-                <viewController id="nD6-JN-c0v" customClass="ScheduleViewController" customModule="mism_capstone" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="nD6-JN-c0v" customClass="ScheduleViewController" customModule="Thrive" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="10K-zV-Ism">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="kWb-By-3I4"/>
                     </view>
+                    <navigationItem key="navigationItem" id="4cb-d7-5Ea"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aAJ-tN-yiO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="117" y="120"/>
+            <point key="canvasLocation" x="1026.0869565217392" y="119.86607142857142"/>
         </scene>
     </scenes>
 </document>
