@@ -16,7 +16,7 @@ extension UIColor{
         
         return UIColor(red:red, green:green, blue:blue, alpha:CGFloat(alpha))
     }
-    
+
     class func themeOrange() -> UIColor{
         let color = UIColor.fromHex(0xFFAE41, alpha: 1.0)
         return color

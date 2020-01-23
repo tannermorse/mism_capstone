@@ -9,6 +9,14 @@
 /* Begin PBXBuildFile section */
 		262F53B8C05B8003D83FB938 /* Pods_mism_capstone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2D0129ED85CDA0E68E1300A /* Pods_mism_capstone.framework */; };
 		B0833357CF1B7A91C04198C0 /* Pods_mism_capstoneTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D3F65BDE4E6CB1D36425A83 /* Pods_mism_capstoneTests.framework */; };
+		F32B7B4A23CFEF36007114B7 /* ZoneTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32B7B4923CFEF36007114B7 /* ZoneTableViewCell.swift */; };
+		F32B7B4D23D00B6C007114B7 /* DetailZoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32B7B4C23D00B6C007114B7 /* DetailZoneViewController.swift */; };
+		F32B7B4F23D00B82007114B7 /* DetailZoneViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F32B7B4E23D00B82007114B7 /* DetailZoneViewController.storyboard */; };
+		F32B7B5223D00DBB007114B7 /* Valve.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32B7B5123D00DBB007114B7 /* Valve.swift */; };
+		F32B7B5423D00DC6007114B7 /* Zone.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32B7B5323D00DC6007114B7 /* Zone.swift */; };
+		F32B7B5623D016A4007114B7 /* +UINavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32B7B5523D016A4007114B7 /* +UINavigationBar.swift */; };
+		F32B7B5923D01884007114B7 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32B7B5823D01884007114B7 /* SettingsViewController.swift */; };
+		F32B7B5B23D0188E007114B7 /* SettingsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F32B7B5A23D0188E007114B7 /* SettingsViewController.storyboard */; };
 		F32BEDBF23C38C5F00E1C50E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32BEDBE23C38C5F00E1C50E /* AppDelegate.swift */; };
 		F32BEDC323C38C5F00E1C50E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32BEDC223C38C5F00E1C50E /* MainViewController.swift */; };
 		F32BEDC623C38C5F00E1C50E /* MainViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F32BEDC423C38C5F00E1C50E /* MainViewController.storyboard */; };
@@ -45,6 +53,14 @@
 		9D3F65BDE4E6CB1D36425A83 /* Pods_mism_capstoneTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_mism_capstoneTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C401E5C19BBC804E6E636FBD /* Pods-mism_capstone.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mism_capstone.release.xcconfig"; path = "Target Support Files/Pods-mism_capstone/Pods-mism_capstone.release.xcconfig"; sourceTree = "<group>"; };
 		F2D0129ED85CDA0E68E1300A /* Pods_mism_capstone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_mism_capstone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F32B7B4923CFEF36007114B7 /* ZoneTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoneTableViewCell.swift; sourceTree = "<group>"; };
+		F32B7B4C23D00B6C007114B7 /* DetailZoneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailZoneViewController.swift; sourceTree = "<group>"; };
+		F32B7B4E23D00B82007114B7 /* DetailZoneViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DetailZoneViewController.storyboard; sourceTree = "<group>"; };
+		F32B7B5123D00DBB007114B7 /* Valve.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Valve.swift; sourceTree = "<group>"; };
+		F32B7B5323D00DC6007114B7 /* Zone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Zone.swift; sourceTree = "<group>"; };
+		F32B7B5523D016A4007114B7 /* +UINavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "+UINavigationBar.swift"; sourceTree = "<group>"; };
+		F32B7B5823D01884007114B7 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		F32B7B5A23D0188E007114B7 /* SettingsViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SettingsViewController.storyboard; sourceTree = "<group>"; };
 		F32BEDBB23C38C5F00E1C50E /* Thrive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Thrive.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F32BEDBE23C38C5F00E1C50E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F32BEDC223C38C5F00E1C50E /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -108,6 +124,33 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		F32B7B4B23D00B2B007114B7 /* DetailZoneViewControllerScene */ = {
+			isa = PBXGroup;
+			children = (
+				F32B7B4C23D00B6C007114B7 /* DetailZoneViewController.swift */,
+				F32B7B4E23D00B82007114B7 /* DetailZoneViewController.storyboard */,
+			);
+			path = DetailZoneViewControllerScene;
+			sourceTree = "<group>";
+		};
+		F32B7B5023D00DAB007114B7 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F32B7B5123D00DBB007114B7 /* Valve.swift */,
+				F32B7B5323D00DC6007114B7 /* Zone.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		F32B7B5723D0185C007114B7 /* SettingsViewControllerScene */ = {
+			isa = PBXGroup;
+			children = (
+				F32B7B5823D01884007114B7 /* SettingsViewController.swift */,
+				F32B7B5A23D0188E007114B7 /* SettingsViewController.storyboard */,
+			);
+			path = SettingsViewControllerScene;
+			sourceTree = "<group>";
+		};
 		F32BEDB223C38C5F00E1C50E = {
 			isa = PBXGroup;
 			children = (
@@ -134,6 +177,7 @@
 				F36C75AA23C39C6F009BDA73 /* Scenes */,
 				F36C75AB23C39DD3009BDA73 /* AppLaunchHelpers */,
 				F32BEDE523C38F7400E1C50E /* Extensions */,
+				F32B7B5023D00DAB007114B7 /* Models */,
 				F32BEDCA23C38C6100E1C50E /* Assets.xcassets */,
 				F32BEDCF23C38C6100E1C50E /* Info.plist */,
 				F32BEDC723C38C5F00E1C50E /* mism_capstone.xcdatamodeld */,
@@ -157,6 +201,7 @@
 				F32BEDE823C38F8400E1C50E /* +UIStackView.swift */,
 				F32BEDEA23C38F8900E1C50E /* +UIStoryboard.swift */,
 				F32BEDEC23C38F8C00E1C50E /* +UIViewAnchor.swift */,
+				F32B7B5523D016A4007114B7 /* +UINavigationBar.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -182,6 +227,8 @@
 		F36C75AA23C39C6F009BDA73 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				F32B7B5723D0185C007114B7 /* SettingsViewControllerScene */,
+				F32B7B4B23D00B2B007114B7 /* DetailZoneViewControllerScene */,
 				F36C75B323C649E8009BDA73 /* AccountViewControllerScene */,
 				F36C75AC23C6448D009BDA73 /* ZoneViewControllerScene */,
 				F32BEDF023C3916700E1C50E /* MainViewControllerScene */,
@@ -204,6 +251,7 @@
 			children = (
 				F36C75AD23C644CB009BDA73 /* ZoneViewController.storyboard */,
 				F36C75B123C64602009BDA73 /* ZoneViewController.swift */,
+				F32B7B4923CFEF36007114B7 /* ZoneTableViewCell.swift */,
 			);
 			path = ZoneViewControllerScene;
 			sourceTree = "<group>";
@@ -300,9 +348,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F32B7B5B23D0188E007114B7 /* SettingsViewController.storyboard in Resources */,
 				F36C75A923C39940009BDA73 /* ScheduleViewController.storyboard in Resources */,
 				F32BEDCE23C38C6100E1C50E /* LaunchScreen.storyboard in Resources */,
 				F36C75B723C64A50009BDA73 /* AccountViewController.storyboard in Resources */,
+				F32B7B4F23D00B82007114B7 /* DetailZoneViewController.storyboard in Resources */,
 				F32BEDCB23C38C6100E1C50E /* Assets.xcassets in Resources */,
 				F32BEDC623C38C5F00E1C50E /* MainViewController.storyboard in Resources */,
 				F36C75AE23C644CB009BDA73 /* ZoneViewController.storyboard in Resources */,
@@ -373,13 +423,19 @@
 				F32BEDC923C38C5F00E1C50E /* mism_capstone.xcdatamodeld in Sources */,
 				F32BEDE723C38F8000E1C50E /* +UIColor.swift in Sources */,
 				F32BEDED23C38F8C00E1C50E /* +UIViewAnchor.swift in Sources */,
+				F32B7B5623D016A4007114B7 /* +UINavigationBar.swift in Sources */,
 				F36C75A723C3990E009BDA73 /* ScheduleViewController.swift in Sources */,
 				F36C75B223C64602009BDA73 /* ZoneViewController.swift in Sources */,
 				F32BEDC323C38C5F00E1C50E /* MainViewController.swift in Sources */,
+				F32B7B5923D01884007114B7 /* SettingsViewController.swift in Sources */,
 				F36C75B523C64A10009BDA73 /* AccountViewController.swift in Sources */,
 				F32BEDE923C38F8400E1C50E /* +UIStackView.swift in Sources */,
+				F32B7B5223D00DBB007114B7 /* Valve.swift in Sources */,
+				F32B7B5423D00DC6007114B7 /* Zone.swift in Sources */,
 				F32BEDEB23C38F8900E1C50E /* +UIStoryboard.swift in Sources */,
 				F32BEDBF23C38C5F00E1C50E /* AppDelegate.swift in Sources */,
+				F32B7B4A23CFEF36007114B7 /* ZoneTableViewCell.swift in Sources */,
+				F32B7B4D23D00B6C007114B7 /* DetailZoneViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,4 +1,3 @@
-//
 //  AccountViewController.swift
 //  mism_capstone
 //
@@ -9,37 +8,67 @@
 import UIKit
 
 class AccountViewController: UIViewController, StoryboardInstantiatable {
-    var button = UIButton()
+    
+    @IBOutlet weak var tableView: UITableView!
+    
+    
+    var accountNames = ["ben", "jerry"]
+    var accountCells = [AccountCellInfo(title: "Settings", icon: "gear"), AccountCellInfo(title: "Sign out", icon: "escape")]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Acount"
-        view.backgroundColor = UIColor.themeRed()
+        title = "Account"
+        navigationController?.navigationBar.setThemeTextAttributes()
         addSubViews()
-        createButton(withTitle: "go to schedule")
+        setupTableView()
+        accountNames.append(String(accountNames.first! + "jones"))
+    }
+    
+    func setupTableView() {
         
     }
     
     func addSubViews() {
-        [button].forEach() {view.addSubview($0)}
+        [].forEach() {view.addSubview($0)}
     }
+
     
-    func createButton(withTitle buttonTitle: String) {
-        button.anchor(top: nil, leading: nil, trailing: nil, bottom: nil, centerX: view.centerXAnchor, centerY: view.centerYAnchor, size: .init(width: 300, height: 100))
-        button.addTarget(self, action: #selector(pushScheduleViewController), for: .touchUpInside)
-        button.setTitle(buttonTitle, for: .normal)
-        button.layer.cornerRadius = 25
-        button.layer.borderColor = UIColor.themeBlue().cgColor
-        button.layer.borderWidth = 2
-        button.backgroundColor = UIColor.themeBlack()
-    }
-    
-    
-    @objc func pushScheduleViewController() {
-        let vc = ScheduleViewController.storyboardInitialViewController()
+    func pushSettingsViewController() {
+        let vc = SettingsViewController.storyboardInitialViewController()
         navigationController?.pushViewController(vc, animated: true)
     }
+}
 
 
+extension AccountViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return accountCells.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell(style: .default, reuseIdentifier: "string")
+        cell.selectionStyle = .none
+        if #available(iOS 13.0, *) {
+            cell.imageView?.image = UIImage(systemName: accountCells[indexPath.row].icon)
+        }
+        if indexPath.row == 0 {
+            cell.accessoryType = .disclosureIndicator
+        }
+        cell.textLabel?.text = accountCells[indexPath.row].title
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row == 0 {
+            pushSettingsViewController()
+        }
+    }
+    
+    
+}
 
+struct AccountCellInfo {
+    var title: String
+    var icon: String
 }

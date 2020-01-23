@@ -13,6 +13,7 @@ class ScheduleViewController: UIViewController, StoryboardInstantiatable {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Schedule"
+        navigationController?.navigationBar.setThemeTextAttributes()
     }
     
 }
