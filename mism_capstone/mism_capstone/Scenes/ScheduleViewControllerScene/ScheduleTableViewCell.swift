@@ -12,7 +12,6 @@ class ScheduleTableViewCell: UITableViewCell {
     
     var schedImageView = UIImageView()
     var schedStartLabel = UILabel()
-    var schedDurationLabel = UILabel()
     var schedNameLabel = UILabel()
     var vStack = UIStackView()
     
@@ -29,18 +28,21 @@ class ScheduleTableViewCell: UITableViewCell {
     }
     
     func addSubviews() {
-        func addSubviews() {
-            [schedImageView, schedNameLabel, schedStartLabel, schedDurationLabel, vStack].forEach() {self.addSubview($0)}
-        }
+        [schedImageView, schedNameLabel, schedStartLabel, vStack].forEach() {self.addSubview($0)}
     }
     
     func configureCell(schedule: Schedule) {
-        self.accessoryType = .disclosureIndicator
+        accessoryType = .disclosureIndicator
+        selectionStyle = .none
         backgroundColor = UIColor.systemGray.withAlphaComponent(0.1)
+        layer.cornerRadius = 25
+        layer.borderWidth = 5
+        layer.borderColor = UIColor.white.cgColor
         setupSchedImageView(image: getTimeOfDayImage(hour: schedule.hour))
         setupSchedStartLabel(startTime: String(schedule.hour), days: schedule.daysOfweek[0])
         setupSchedNameLabel(withName: schedule.scheduleName)
         setupStackView()
+    
         
     }
     
@@ -65,18 +67,18 @@ class ScheduleTableViewCell: UITableViewCell {
     
     func setupSchedStartLabel(startTime: String, days: Int) {
         schedStartLabel.font = themedFont.primaryLabel
-        schedStartLabel.text = "\(startTime) \(days)"
+        schedStartLabel.text = "Start time: \(startTime), Days: \(days)"
     }
     
     func setupSchedNameLabel(withName scheduleName: String) {
         schedNameLabel.font = themedFont.secondaryLabel
-        schedDurationLabel.text = scheduleName
+        schedNameLabel.text = scheduleName
     }
     
 
     func setupStackView() {
-        vStack.configureStackView(subViews: [schedImageView, schedNameLabel, schedStartLabel, schedDurationLabel], distribution: .fillProportionally, axis: .vertical, alignment: .top, spacing: 10)
-        vStack.anchor(top: topAnchor, leading: leadingAnchor, trailing: trailingAnchor, bottom: bottomAnchor, centerX: nil, centerY: nil, padding: .init(top: 10, left: 10, bottom: 10, right: 10))
+        vStack.configureStackView(subViews: [schedImageView, schedStartLabel, schedNameLabel], distribution: .fill, axis: .vertical, alignment: .top, spacing: 10)
+        vStack.anchor(top: topAnchor, leading: leadingAnchor, trailing: trailingAnchor, bottom: bottomAnchor, centerX: nil, centerY: nil, padding: .init(top: 20, left: 20, bottom: 20, right: 20))
     }
     
     

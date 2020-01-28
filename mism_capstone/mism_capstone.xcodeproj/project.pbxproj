@@ -13,7 +13,7 @@
 		F32B7B4D23D00B6C007114B7 /* DetailZoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32B7B4C23D00B6C007114B7 /* DetailZoneViewController.swift */; };
 		F32B7B4F23D00B82007114B7 /* DetailZoneViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F32B7B4E23D00B82007114B7 /* DetailZoneViewController.storyboard */; };
 		F32B7B5223D00DBB007114B7 /* Valve.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32B7B5123D00DBB007114B7 /* Valve.swift */; };
-		F32B7B5423D00DC6007114B7 /* Zone.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32B7B5323D00DC6007114B7 /* Zone.swift */; };
+		F32B7B5423D00DC6007114B7 /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32B7B5323D00DC6007114B7 /* Schedule.swift */; };
 		F32B7B5623D016A4007114B7 /* +UINavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32B7B5523D016A4007114B7 /* +UINavigationBar.swift */; };
 		F32B7B5923D01884007114B7 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32B7B5823D01884007114B7 /* SettingsViewController.swift */; };
 		F32B7B5B23D0188E007114B7 /* SettingsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F32B7B5A23D0188E007114B7 /* SettingsViewController.storyboard */; };
@@ -28,12 +28,16 @@
 		F32BEDE923C38F8400E1C50E /* +UIStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32BEDE823C38F8400E1C50E /* +UIStackView.swift */; };
 		F32BEDEB23C38F8900E1C50E /* +UIStoryboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32BEDEA23C38F8900E1C50E /* +UIStoryboard.swift */; };
 		F32BEDED23C38F8C00E1C50E /* +UIViewAnchor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32BEDEC23C38F8C00E1C50E /* +UIViewAnchor.swift */; };
+		F3381D2123DE27590069E4BE /* ValveController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3381D2023DE27590069E4BE /* ValveController.swift */; };
+		F3381D2323DE33170069E4BE /* ScheduleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3381D2223DE33170069E4BE /* ScheduleController.swift */; };
 		F36C75A723C3990E009BDA73 /* ScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36C75A623C3990E009BDA73 /* ScheduleViewController.swift */; };
 		F36C75A923C39940009BDA73 /* ScheduleViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F36C75A823C39940009BDA73 /* ScheduleViewController.storyboard */; };
 		F36C75AE23C644CB009BDA73 /* ZoneViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F36C75AD23C644CB009BDA73 /* ZoneViewController.storyboard */; };
 		F36C75B223C64602009BDA73 /* ZoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36C75B123C64602009BDA73 /* ZoneViewController.swift */; };
 		F36C75B523C64A10009BDA73 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36C75B423C64A10009BDA73 /* AccountViewController.swift */; };
 		F36C75B723C64A50009BDA73 /* AccountViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F36C75B623C64A50009BDA73 /* AccountViewController.storyboard */; };
+		F3F41BCA23DE408400F2D596 /* +UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F41BC923DE408400F2D596 /* +UIImageView.swift */; };
+		F3F41BCC23DE555E00F2D596 /* ScheduleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F41BCB23DE555E00F2D596 /* ScheduleTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,7 +61,7 @@
 		F32B7B4C23D00B6C007114B7 /* DetailZoneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailZoneViewController.swift; sourceTree = "<group>"; };
 		F32B7B4E23D00B82007114B7 /* DetailZoneViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DetailZoneViewController.storyboard; sourceTree = "<group>"; };
 		F32B7B5123D00DBB007114B7 /* Valve.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Valve.swift; sourceTree = "<group>"; };
-		F32B7B5323D00DC6007114B7 /* Zone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Zone.swift; sourceTree = "<group>"; };
+		F32B7B5323D00DC6007114B7 /* Schedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
 		F32B7B5523D016A4007114B7 /* +UINavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "+UINavigationBar.swift"; sourceTree = "<group>"; };
 		F32B7B5823D01884007114B7 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		F32B7B5A23D0188E007114B7 /* SettingsViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SettingsViewController.storyboard; sourceTree = "<group>"; };
@@ -76,12 +80,16 @@
 		F32BEDE823C38F8400E1C50E /* +UIStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "+UIStackView.swift"; sourceTree = "<group>"; };
 		F32BEDEA23C38F8900E1C50E /* +UIStoryboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "+UIStoryboard.swift"; sourceTree = "<group>"; };
 		F32BEDEC23C38F8C00E1C50E /* +UIViewAnchor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "+UIViewAnchor.swift"; sourceTree = "<group>"; };
+		F3381D2023DE27590069E4BE /* ValveController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValveController.swift; sourceTree = "<group>"; };
+		F3381D2223DE33170069E4BE /* ScheduleController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleController.swift; sourceTree = "<group>"; };
 		F36C75A623C3990E009BDA73 /* ScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewController.swift; sourceTree = "<group>"; };
 		F36C75A823C39940009BDA73 /* ScheduleViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ScheduleViewController.storyboard; sourceTree = "<group>"; };
 		F36C75AD23C644CB009BDA73 /* ZoneViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ZoneViewController.storyboard; sourceTree = "<group>"; };
 		F36C75B123C64602009BDA73 /* ZoneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoneViewController.swift; sourceTree = "<group>"; };
 		F36C75B423C64A10009BDA73 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		F36C75B623C64A50009BDA73 /* AccountViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AccountViewController.storyboard; sourceTree = "<group>"; };
+		F3F41BC923DE408400F2D596 /* +UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "+UIImageView.swift"; sourceTree = "<group>"; };
+		F3F41BCB23DE555E00F2D596 /* ScheduleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,7 +145,7 @@
 			isa = PBXGroup;
 			children = (
 				F32B7B5123D00DBB007114B7 /* Valve.swift */,
-				F32B7B5323D00DC6007114B7 /* Zone.swift */,
+				F32B7B5323D00DC6007114B7 /* Schedule.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -174,6 +182,7 @@
 		F32BEDBD23C38C5F00E1C50E /* mism_capstone */ = {
 			isa = PBXGroup;
 			children = (
+				F3381D1F23DE273D0069E4BE /* Controllers */,
 				F36C75AA23C39C6F009BDA73 /* Scenes */,
 				F36C75AB23C39DD3009BDA73 /* AppLaunchHelpers */,
 				F32BEDE523C38F7400E1C50E /* Extensions */,
@@ -202,6 +211,7 @@
 				F32BEDEA23C38F8900E1C50E /* +UIStoryboard.swift */,
 				F32BEDEC23C38F8C00E1C50E /* +UIViewAnchor.swift */,
 				F32B7B5523D016A4007114B7 /* +UINavigationBar.swift */,
+				F3F41BC923DE408400F2D596 /* +UIImageView.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -215,11 +225,21 @@
 			path = MainViewControllerScene;
 			sourceTree = "<group>";
 		};
+		F3381D1F23DE273D0069E4BE /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				F3381D2023DE27590069E4BE /* ValveController.swift */,
+				F3381D2223DE33170069E4BE /* ScheduleController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 		F36C75A523C398DC009BDA73 /* ScheduleViewControllerScene */ = {
 			isa = PBXGroup;
 			children = (
 				F36C75A623C3990E009BDA73 /* ScheduleViewController.swift */,
 				F36C75A823C39940009BDA73 /* ScheduleViewController.storyboard */,
+				F3F41BCB23DE555E00F2D596 /* ScheduleTableViewCell.swift */,
 			);
 			path = ScheduleViewControllerScene;
 			sourceTree = "<group>";
@@ -421,9 +441,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				F32BEDC923C38C5F00E1C50E /* mism_capstone.xcdatamodeld in Sources */,
+				F3381D2123DE27590069E4BE /* ValveController.swift in Sources */,
+				F3381D2323DE33170069E4BE /* ScheduleController.swift in Sources */,
 				F32BEDE723C38F8000E1C50E /* +UIColor.swift in Sources */,
 				F32BEDED23C38F8C00E1C50E /* +UIViewAnchor.swift in Sources */,
 				F32B7B5623D016A4007114B7 /* +UINavigationBar.swift in Sources */,
+				F3F41BCC23DE555E00F2D596 /* ScheduleTableViewCell.swift in Sources */,
 				F36C75A723C3990E009BDA73 /* ScheduleViewController.swift in Sources */,
 				F36C75B223C64602009BDA73 /* ZoneViewController.swift in Sources */,
 				F32BEDC323C38C5F00E1C50E /* MainViewController.swift in Sources */,
@@ -431,8 +454,9 @@
 				F36C75B523C64A10009BDA73 /* AccountViewController.swift in Sources */,
 				F32BEDE923C38F8400E1C50E /* +UIStackView.swift in Sources */,
 				F32B7B5223D00DBB007114B7 /* Valve.swift in Sources */,
-				F32B7B5423D00DC6007114B7 /* Zone.swift in Sources */,
+				F32B7B5423D00DC6007114B7 /* Schedule.swift in Sources */,
 				F32BEDEB23C38F8900E1C50E /* +UIStoryboard.swift in Sources */,
+				F3F41BCA23DE408400F2D596 /* +UIImageView.swift in Sources */,
 				F32BEDBF23C38C5F00E1C50E /* AppDelegate.swift in Sources */,
 				F32B7B4A23CFEF36007114B7 /* ZoneTableViewCell.swift in Sources */,
 				F32B7B4D23D00B6C007114B7 /* DetailZoneViewController.swift in Sources */,

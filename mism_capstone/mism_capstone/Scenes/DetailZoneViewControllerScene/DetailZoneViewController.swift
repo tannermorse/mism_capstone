@@ -8,23 +8,50 @@
 
 import UIKit
 
-class DetailZoneViewController: UIViewController {
-
+class DetailZoneViewController: UIViewController, StoryboardInstantiatable {
+    @IBOutlet weak var zoneImageView: UIImageView!
+    @IBOutlet weak var scheduleLabel: UILabel!
+    @IBOutlet weak var tableView: UITableView!
+    
+    var valve: Valve?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        scheduleLabel.font = themedFont.titleLabel
+        navigationController?.navigationBar.setThemeTextAttributes()
+        zoneImageView.load(url: URL(string: "https://images2.minutemediacdn.com/image/upload/c_fill,g_auto,h_1248,w_2220/f_auto,q_auto,w_1100/v1555274667/shape/mentalfloss/istock-498015683.jpg")!)
+        
+        tableView.register(ScheduleTableViewCell.self, forCellReuseIdentifier: "ScheduleTableViewCell")
+        tableView.separatorStyle = .none
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    func setupEditButton() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(editPressed))
     }
-    */
+    
+    @objc func editPressed() {
+        //TODO: add functionality to edit zone
+    }
 
+
+}
+
+extension DetailZoneViewController: UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return valve?.schedules.count ?? 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: ScheduleCell.identifier, for: indexPath) as! ScheduleTableViewCell
+        cell.configureCell(schedule: (valve?.schedules[indexPath.row])!)
+        return cell
+    }
+    
+    
+}
+
+struct ScheduleCell {
+    static let identifier = "ScheduleTableViewCell"
 }

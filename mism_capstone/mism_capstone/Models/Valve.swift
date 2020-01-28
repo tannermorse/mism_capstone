@@ -8,7 +8,14 @@
 
 import Foundation
 
-
 struct Valve {
-    var title: String
+    var id: String
+    var zoneName: String
+    var imageUrl: String?
+    var latitude: Double
+    var longitude: Double
+    var receiverId: String
+    var schedules: [Schedule]
 }
+
+
