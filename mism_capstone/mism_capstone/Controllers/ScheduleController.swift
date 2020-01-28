@@ -7,3 +7,17 @@
 //
 
 import Foundation
+
+class ScheduleController {
+    static let shared = ScheduleController()
+    
+    func addScheduleToValve(valveIds: [String], minute: Int, hour: Int, AmOrPm: String) {
+        // send to api info to create a schedule
+    }
+    
+    func deleteSchedule(valveIds: [String], scheduleId: String) {
+        // send to api info to delete a schedule
+        //DELETE
+    }
+    
+}

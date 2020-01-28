@@ -27,9 +27,10 @@ class ZoneViewController: UIViewController, StoryboardInstantiatable {
         tableView.separatorStyle = .none
     }
     
-    func pushDetailZoneViewController(zone: Zone) {
+    func pushDetailZoneViewController(valve: Valve) {
         let vc = DetailZoneViewController.storyboardInitialViewController()
-        vc.title = zone.title
+        vc.title = valve.zoneName
+        vc.valve = valve
         navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -48,12 +49,12 @@ extension ZoneViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ZoneTableViewCell", for: indexPath) as! ZoneTableViewCell
-        cell.configureCell(title: zoneCells[indexPath.row].title, image: zoneCells[indexPath.row].icon, id: indexPath.row)
+        cell.configureCell(title: zoneCells[indexPath.row].title, imageUrl: zoneCells[indexPath.row].icon, id: indexPath.row)
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        pushDetailZoneViewController(zone: Zone(id: String(indexPath.row),title: zoneCells[indexPath.row].title, valve: [Valve(title: "Valve 1")]))
+        pushDetailZoneViewController(valve: Valve(id: "1", zoneName: "Front Yard", imageUrl: "frontyard", latitude: 2.01, longitude: 2.01, receiverId: "123", schedules: [Schedule(scheduleId: "1", scheduleName: "Morning Dew", valveId: "1", minute: 30, hour: 6, daysOfweek: [2,3,5]), Schedule(scheduleId: "1", scheduleName: "Afternoon Rinse", valveId: "1", minute: 30, hour: 13, daysOfweek: [2,3,5]), Schedule(scheduleId: "1", scheduleName: "Evening Extra", valveId: "1", minute: 30, hour: 19, daysOfweek: [2,3,5]), Schedule(scheduleId: "1", scheduleName: "Night Rade", valveId: "1", minute: 30, hour: 22, daysOfweek: [2,3,5])]))
     }
     
     
