@@ -17,6 +17,7 @@ extension UINavigationBar {
 
 struct themedFont {
     static let titleLabel = UIFont(name: "Superclarendon-Black", size: 18.0)!
+    static let viewLabel = UIFont(name: "Superclarendon-Black", size: 16.0)!
     static let primaryLabel = UIFont(name: "Superclarendon-Black", size: 12.0)!
     static let secondaryLabel = UIFont(name: "Superclarendon", size: 10.0)!
 

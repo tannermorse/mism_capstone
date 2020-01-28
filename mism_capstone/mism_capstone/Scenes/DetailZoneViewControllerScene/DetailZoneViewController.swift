@@ -49,6 +49,14 @@ extension DetailZoneViewController: UITableViewDataSource, UITableViewDelegate {
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc = EditScheduleViewController.storyboardInitialViewController()
+        vc.schedule = valve?.schedules[indexPath.row]
+        let navController = UINavigationController(rootViewController: vc) // Creating a navigation
+
+        self.present(navController, animated: true, completion: nil)
+    }
+    
     
 }
 

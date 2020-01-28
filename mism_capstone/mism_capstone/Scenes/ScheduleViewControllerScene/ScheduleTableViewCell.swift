@@ -14,6 +14,7 @@ class ScheduleTableViewCell: UITableViewCell {
     var schedStartLabel = UILabel()
     var schedNameLabel = UILabel()
     var vStack = UIStackView()
+    var schedule: Schedule?
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super .init(style: style, reuseIdentifier: reuseIdentifier)
@@ -32,6 +33,7 @@ class ScheduleTableViewCell: UITableViewCell {
     }
     
     func configureCell(schedule: Schedule) {
+        self.schedule = schedule
         accessoryType = .disclosureIndicator
         selectionStyle = .none
         backgroundColor = UIColor.systemGray.withAlphaComponent(0.1)
@@ -43,7 +45,6 @@ class ScheduleTableViewCell: UITableViewCell {
         setupSchedNameLabel(withName: schedule.scheduleName)
         setupStackView()
     
-        
     }
     
     func getTimeOfDayImage(hour: Int) -> String {
