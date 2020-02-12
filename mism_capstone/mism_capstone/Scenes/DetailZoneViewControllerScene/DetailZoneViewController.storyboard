@@ -23,7 +23,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Schedules" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fYs-J1-Zn8">
-                                <rect key="frame" x="20" y="254" width="374" height="44"/>
+                                <rect key="frame" x="20" y="285" width="374" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="nU4-e8-nWQ"/>
                                 </constraints>
@@ -32,32 +32,50 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="5Sf-PS-b4T">
-                                <rect key="frame" x="20" y="308" width="374" height="554"/>
+                                <rect key="frame" x="20" y="339" width="374" height="523"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <connections>
                                     <outlet property="dataSource" destination="vwN-cf-IrI" id="Tgs-NM-IIi"/>
                                     <outlet property="delegate" destination="vwN-cf-IrI" id="EWt-eu-0pQ"/>
                                 </connections>
                             </tableView>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="S5e-yO-HIc">
+                                <rect key="frame" x="345" y="259" width="51" height="31"/>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Test zone" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4fC-zL-ndW">
+                                <rect key="frame" x="234" y="252" width="72.5" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="Kyp-jM-chh"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="fYs-J1-Zn8" firstAttribute="top" secondItem="Zu0-lg-Y0H" secondAttribute="bottom" constant="10" id="6mL-I1-GwK"/>
+                            <constraint firstItem="S5e-yO-HIc" firstAttribute="top" secondItem="Zu0-lg-Y0H" secondAttribute="bottom" constant="15" id="2aQ-bU-XYs"/>
                             <constraint firstItem="Zu0-lg-Y0H" firstAttribute="leading" secondItem="nsN-tG-A0R" secondAttribute="leading" id="8WD-er-M0G"/>
                             <constraint firstItem="5Sf-PS-b4T" firstAttribute="bottom" secondItem="nsN-tG-A0R" secondAttribute="bottom" id="8tr-zg-gkk"/>
                             <constraint firstItem="5Sf-PS-b4T" firstAttribute="leading" secondItem="nsN-tG-A0R" secondAttribute="leading" constant="20" id="A1g-gz-xWu"/>
+                            <constraint firstItem="fYs-J1-Zn8" firstAttribute="top" secondItem="4fC-zL-ndW" secondAttribute="bottom" constant="-11" id="F3m-5o-ZD6"/>
+                            <constraint firstItem="4fC-zL-ndW" firstAttribute="top" secondItem="Zu0-lg-Y0H" secondAttribute="bottom" constant="8" id="GHY-Wl-a2l"/>
                             <constraint firstItem="fYs-J1-Zn8" firstAttribute="leading" secondItem="nsN-tG-A0R" secondAttribute="leading" constant="20" id="HFI-0I-49b"/>
                             <constraint firstItem="nsN-tG-A0R" firstAttribute="trailing" secondItem="fYs-J1-Zn8" secondAttribute="trailing" constant="20" id="KRi-sm-MFg"/>
+                            <constraint firstItem="nsN-tG-A0R" firstAttribute="trailing" secondItem="S5e-yO-HIc" secondAttribute="trailing" constant="20" id="Kys-VX-EH2"/>
                             <constraint firstItem="5Sf-PS-b4T" firstAttribute="top" secondItem="fYs-J1-Zn8" secondAttribute="bottom" constant="10" id="WPS-xg-2n9"/>
                             <constraint firstItem="Zu0-lg-Y0H" firstAttribute="top" secondItem="nsN-tG-A0R" secondAttribute="top" id="Ze7-Z0-2GM"/>
                             <constraint firstItem="nsN-tG-A0R" firstAttribute="trailing" secondItem="5Sf-PS-b4T" secondAttribute="trailing" constant="20" id="bOS-a7-Uuv"/>
                             <constraint firstItem="Zu0-lg-Y0H" firstAttribute="trailing" secondItem="nsN-tG-A0R" secondAttribute="trailing" id="vd8-5e-B2R"/>
+                            <constraint firstItem="S5e-yO-HIc" firstAttribute="leading" secondItem="4fC-zL-ndW" secondAttribute="trailing" constant="38.5" id="yu6-nU-i9e"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="nsN-tG-A0R"/>
                     </view>
                     <connections>
                         <outlet property="scheduleLabel" destination="fYs-J1-Zn8" id="NaM-vu-Hbz"/>
                         <outlet property="tableView" destination="5Sf-PS-b4T" id="lAz-cn-666"/>
+                        <outlet property="testLabel" destination="4fC-zL-ndW" id="3Lg-Ns-BUJ"/>
+                        <outlet property="testSwitch" destination="S5e-yO-HIc" id="hPQ-29-KUX"/>
                         <outlet property="zoneImageView" destination="Zu0-lg-Y0H" id="EgV-2I-1wu"/>
                     </connections>
                 </viewController>

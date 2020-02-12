@@ -12,7 +12,7 @@ class EditScheduleViewController: UIViewController, StoryboardInstantiatable {
     
     @IBOutlet weak var tableView: UITableView!
     
-    var schedule: Schedule?
+    var schedule: Schedule!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -89,7 +89,11 @@ extension EditScheduleViewController: UITableViewDelegate, UITableViewDataSource
         cell.backgroundColor = UIColor.systemGray.withAlphaComponent(0.1)
         cell.layer.cornerRadius = 15
         cell.layer.borderWidth = 5
-        cell.layer.borderColor = UIColor.white.cgColor
+        if #available(iOS 13.0, *) {
+            cell.layer.borderColor = UIColor.systemBackground.cgColor
+        } else {
+            cell.layer.borderColor = UIColor.white.cgColor
+        }
         cell.selectionStyle = .none
         
         if indexPath.section == 0 {
@@ -130,17 +134,27 @@ extension EditScheduleViewController: UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 1 {
-            print("push to when selector")
             let vc = WhenViewController.storyboardInitialViewController()
             navigationController?.pushViewController(vc, animated: true)
             vc.schedule = schedule
         } else if indexPath.section == 3 {
+            //TODO: push to add valve page
             print("add valve")
         } else if indexPath.section == 4 {
             print("test schedule")
+            testSchedule(scheduleId: schedule.scheduleId)
         } else if indexPath.section == 5 {
-            print("delete schedule")
+            AlertService.shared.deleteAlert(target: self, title: "Delete: \(schedule.scheduleName)?", message: "This is permanent. You will have to recreate this scheudle", completion: delete)
         }
+    }
+    
+    func delete() {
+        //TODO: call delete schedule api
+        self.dismissView()
+    }
+    
+    func testSchedule(scheduleId: String) {
+        //TODO: call test schedule api
     }
     
     func setupTestTarget() {

@@ -13,11 +13,15 @@ class DetailZoneViewController: UIViewController, StoryboardInstantiatable {
     @IBOutlet weak var scheduleLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var testSwitch: UISwitch!
+    @IBOutlet weak var testLabel: UILabel!
+    
     var valve: Valve?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         scheduleLabel.font = themedFont.titleLabel
+        testLabel.font = themedFont.viewLabel
         navigationController?.navigationBar.setThemeTextAttributes()
         zoneImageView.load(url: URL(string: "https://images2.minutemediacdn.com/image/upload/c_fill,g_auto,h_1248,w_2220/f_auto,q_auto,w_1100/v1555274667/shape/mentalfloss/istock-498015683.jpg")!)
         
@@ -52,8 +56,11 @@ extension DetailZoneViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = EditScheduleViewController.storyboardInitialViewController()
         vc.schedule = valve?.schedules[indexPath.row]
+        if #available(iOS 13.0, *) {
+            vc.isModalInPresentation = true
+        }
         let navController = UINavigationController(rootViewController: vc) // Creating a navigation
-
+        
         self.present(navController, animated: true, completion: nil)
     }
     

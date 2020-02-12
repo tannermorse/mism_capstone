@@ -11,11 +11,9 @@ import WebKit
 
 class ZoneTableViewCell: UITableViewCell {
     
-    let zoneImage = WKWebView()
+    let outerView = UIView()
+    let zoneImage = UIImageView()
     let zoneTitle = UILabel()
-    let zoneSwitch = UISwitch()
-    let zoneStackView = UIStackView()
-    let stackViewTitle = UILabel()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super .init(style: style, reuseIdentifier: reuseIdentifier)
@@ -23,50 +21,34 @@ class ZoneTableViewCell: UITableViewCell {
     }
     
     func configureCell(title: String, imageUrl: String, id: Int) {
-        layer.borderWidth = 2
-        layer.borderColor = UIColor.white.cgColor
+        accessoryType = .disclosureIndicator
         selectionStyle = .none
-        self.accessoryType = .disclosureIndicator
+        outerView.backgroundColor = UIColor.systemGray.withAlphaComponent(0.1)
+        outerView.layer.cornerRadius = 25
         setupZoneTitle(title: title)
         setupImageView(imageUrl: imageUrl)
-        setupStackView()
-        zoneSwitch.tag = id
     }
     
     func addSubviews() {
-        [zoneImage, zoneTitle, zoneSwitch, zoneStackView].forEach() {self.addSubview($0)}
+        [outerView, zoneImage, zoneTitle].forEach() {self.addSubview($0)}
+        outerView.anchor(top: topAnchor, leading: leadingAnchor, trailing: trailingAnchor, bottom: bottomAnchor, centerX: nil, centerY: nil, padding: .init(top: 5, left: 5, bottom: 5, right: 5))
+        outerView.addSubview(zoneImage)
+        outerView.addSubview(zoneTitle)
     }
     
     func setupImageView(imageUrl: String) {
-        zoneImage.anchor(top: zoneTitle.bottomAnchor, leading: self.leadingAnchor, trailing: nil, bottom: nil, centerX: nil, centerY: nil, padding: .init(top: 10, left: 10, bottom: 10, right: 10),size: .init(width: 70, height: 70))
-        let request = URLRequest(url: URL(string: "https://images2.minutemediacdn.com/image/upload/c_fill,g_auto,h_1248,w_2220/f_auto,q_auto,w_1100/v1555274667/shape/mentalfloss/istock-498015683.jpg")!)
-        zoneImage.load(request)
-        zoneImage.contentMode = .center
+        zoneImage.anchor(top: nil, leading: outerView.leadingAnchor, trailing: nil, bottom: nil, centerX: nil, centerY: outerView.centerYAnchor, padding: .init(top: 10, left: 10, bottom: 10, right: 10),size: .init(width: 70, height: 70))
+    
+        zoneImage.load(url: URL(string: "https://images2.minutemediacdn.com/image/upload/c_fill,g_auto,h_1248,w_2220/f_auto,q_auto,w_1100/v1555274667/shape/mentalfloss/istock-498015683.jpg")!)
         zoneImage.clipsToBounds = true
         zoneImage.layer.cornerRadius = 35
         zoneImage.isUserInteractionEnabled = false
     }
     
     func setupZoneTitle(title: String) {
-        zoneTitle.anchor(top: self.topAnchor, leading: self.leadingAnchor, trailing: nil, bottom: nil, centerX: nil, centerY: nil, padding: .init(top: 10, left: 10, bottom: 10, right: 10))
+        zoneTitle.anchor(top: nil, leading: self.zoneImage.trailingAnchor, trailing: nil, bottom: nil, centerX: nil, centerY: centerYAnchor, padding: .init(top: 10, left: 10, bottom: 10, right: 10))
         zoneTitle.text = title
         zoneTitle.font = UIFont(name: "Superclarendon-Black", size: 18.0)
-    }
-    
-    func setupStackView() {
-        zoneStackView.anchor(top: nil, leading: self.leadingAnchor, trailing: self.trailingAnchor, bottom: self.bottomAnchor, centerX: nil, centerY: nil, padding: .init(top: 10, left: 10, bottom: 10, right: 10))
-        zoneStackView.configureStackView(subViews: [stackViewTitle, zoneSwitch], distribution: .equalCentering, axis: .horizontal, alignment: .fill, spacing: 10)
-        stackViewTitle.text = "Test Zone"
-        addSwitchTarget()
-    }
-    
-    func addSwitchTarget() {
-        zoneSwitch.addTarget(self, action: #selector(switchDidChange(sender:)), for: .valueChanged)
-    }
-
-    @objc func switchDidChange(sender: UISwitch) {
-        print(sender.tag)
-        //TODO: function from model that starts a zone
     }
     
     required init?(coder aDecoder: NSCoder) {

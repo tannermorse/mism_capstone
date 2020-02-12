@@ -10,6 +10,7 @@ import UIKit
 
 class ScheduleTableViewCell: UITableViewCell {
     
+    var outerView = UIView()
     var schedImageView = UIImageView()
     var schedStartLabel = UILabel()
     var schedNameLabel = UILabel()
@@ -29,22 +30,21 @@ class ScheduleTableViewCell: UITableViewCell {
     }
     
     func addSubviews() {
-        [schedImageView, schedNameLabel, schedStartLabel, vStack].forEach() {self.addSubview($0)}
+        [outerView].forEach() {self.addSubview($0)}
+        [schedImageView, schedNameLabel, schedStartLabel, vStack].forEach() {outerView.addSubview($0)}
+        outerView.anchor(top: topAnchor, leading: leadingAnchor, trailing: trailingAnchor, bottom: bottomAnchor, centerX: nil, centerY: nil, padding: .init(top: 5, left: 5, bottom: 5, right: 5))
     }
     
     func configureCell(schedule: Schedule) {
         self.schedule = schedule
         accessoryType = .disclosureIndicator
         selectionStyle = .none
-        backgroundColor = UIColor.systemGray.withAlphaComponent(0.1)
-        layer.cornerRadius = 25
-        layer.borderWidth = 5
-        layer.borderColor = UIColor.white.cgColor
+        outerView.backgroundColor = UIColor.systemGray.withAlphaComponent(0.1)
+        outerView.layer.cornerRadius = 25
         setupSchedImageView(image: getTimeOfDayImage(hour: schedule.hour))
         setupSchedStartLabel(startTime: String(schedule.hour), days: schedule.daysOfweek[0])
         setupSchedNameLabel(withName: schedule.scheduleName)
         setupStackView()
-    
     }
     
     func getTimeOfDayImage(hour: Int) -> String {
@@ -79,7 +79,7 @@ class ScheduleTableViewCell: UITableViewCell {
 
     func setupStackView() {
         vStack.configureStackView(subViews: [schedImageView, schedStartLabel, schedNameLabel], distribution: .fill, axis: .vertical, alignment: .top, spacing: 10)
-        vStack.anchor(top: topAnchor, leading: leadingAnchor, trailing: trailingAnchor, bottom: bottomAnchor, centerX: nil, centerY: nil, padding: .init(top: 20, left: 20, bottom: 20, right: 20))
+        vStack.anchor(top: outerView.topAnchor, leading: outerView.leadingAnchor, trailing: outerView.trailingAnchor, bottom: outerView.bottomAnchor, centerX: nil, centerY: nil, padding: .init(top: 20, left: 20, bottom: 20, right: 20))
     }
     
     
