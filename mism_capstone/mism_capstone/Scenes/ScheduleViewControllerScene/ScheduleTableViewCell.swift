@@ -17,6 +17,17 @@ class ScheduleTableViewCell: UITableViewCell {
     var vStack = UIStackView()
     var schedule: Schedule?
     
+    func didSelect(viewController: UIViewController) {
+        let vc = EditScheduleViewController.storyboardInitialViewController()
+        vc.schedule = schedule
+        if #available(iOS 13.0, *) {
+            vc.isModalInPresentation = true
+        }
+        let navController = UINavigationController(rootViewController: vc) // Creating a navigation
+        
+        viewController.present(navController, animated: true, completion: nil)
+    }
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super .init(style: style, reuseIdentifier: reuseIdentifier)
         addSubviews()
@@ -42,7 +53,7 @@ class ScheduleTableViewCell: UITableViewCell {
         outerView.backgroundColor = UIColor.systemGray.withAlphaComponent(0.1)
         outerView.layer.cornerRadius = 25
         setupSchedImageView(image: getTimeOfDayImage(hour: schedule.hour))
-        setupSchedStartLabel(startTime: String(schedule.hour), days: schedule.daysOfweek[0])
+        setupSchedStartLabel(startTime: String(schedule.hour), days: schedule.daysOfweek)
         setupSchedNameLabel(withName: schedule.scheduleName)
         setupStackView()
     }
@@ -66,9 +77,10 @@ class ScheduleTableViewCell: UITableViewCell {
         schedImageView.image = UIImage(named: image)
     }
     
-    func setupSchedStartLabel(startTime: String, days: Int) {
+    func setupSchedStartLabel(startTime: String, days: [Int]) {
         schedStartLabel.font = themedFont.primaryLabel
-        schedStartLabel.text = "Start time: \(startTime), Days: \(days)"
+        schedStartLabel.numberOfLines = 2
+        schedStartLabel.text = "Start time: \(startTime) \nDays: \(ScheduleController.shared.getShortWeekDays(days: days))"
     }
     
     func setupSchedNameLabel(withName scheduleName: String) {

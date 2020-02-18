@@ -10,7 +10,7 @@ import Foundation
 
 class ScheduleController {
     static let shared = ScheduleController()
-    var schedules = [Schedule(scheduleId: "1", scheduleName: "Afternoon Rinse", valveId: "1", minute: 30, hour: 13, daysOfweek: [1,2,3,5]), Schedule(scheduleId: "1", scheduleName: "Evening Extra", valveId: "1", minute: 30, hour: 19, daysOfweek: [2,4,5,6]), Schedule(scheduleId: "1", scheduleName: "Night Rade", valveId: "1", minute: 30, hour: 22, daysOfweek: [1,3,5,7])]
+    var schedules = [Schedule(scheduleId: "1", scheduleName: "Afternoon Rinse", valveId: "1", minute: 30, hour: 13, daysOfweek: [1,2,3,5]), Schedule(scheduleId: "1", scheduleName: "Evening Extra", valveId: "1", minute: 30, hour: 19, daysOfweek: [2,4,5,6]), Schedule(scheduleId: "1", scheduleName: "Night Rade", valveId: "1", minute: 30, hour: 22, daysOfweek: [0,1,3,5,6])]
     
     func getSchedulesById(id: String) -> [Schedule] {
         return schedules.filter { $0.valveId == id }
@@ -40,35 +40,30 @@ class ScheduleController {
     func currentWeekday() -> Int{
         let date = Date()
         let calender = Calendar.current
-        return calender.component(.weekday, from: date)
+        return calender.component(.weekday, from: date) - 1
+    }
+    
+    func getShortWeekDays(days: [Int]) -> String {
+        let calender = Calendar.current
+        var daysString = ""
+        for day in days {
+            daysString += "\(calender.shortWeekdaySymbols[day]), "
+        }
+        if daysString != "" {
+            daysString = String(daysString.dropLast(2))
+        }
+        return daysString
     }
     
     func currentWeekDayName(_ day: Int? = nil) -> String {
-        var switchDayValue = currentWeekday()
+        let currentDayValue = currentWeekday()
+        let calender = Calendar.current
         if day != nil {
-            if switchDayValue == day! {
+            if currentDayValue == day! {
                 return "Today"
-            } else {
-                switchDayValue = day!
             }
         }
-        
-        switch switchDayValue {
-        case 1:
-            return "Sunday"
-        case 2:
-            return "Monday"
-        case 3:
-            return "Tuesday"
-        case 4:
-            return "Wednesday"
-        case 5:
-            return "Thursday"
-        case 6:
-            return "Friday"
-        default:
-            return "Saturday"
-        }
+        return calender.standaloneWeekdaySymbols[day!]
     }
     
 }

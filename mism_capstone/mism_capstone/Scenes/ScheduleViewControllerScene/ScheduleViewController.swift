@@ -40,14 +40,14 @@ class ScheduleViewController: UIViewController, StoryboardInstantiatable {
     
     @objc func changeDay(addDay: UIBarButtonItem) {
         if addDay.tag == 2 {
-            if currentDay == 1 {
-                currentDay = 7
+            if currentDay == 0 {
+                currentDay = 6
             } else {
                 currentDay -= 1
             }
         } else {
-            if currentDay == 7 {
-                currentDay = 1
+            if currentDay == 6 {
+                currentDay = 0
             } else {
                 currentDay += 1
             }
@@ -70,5 +70,16 @@ extension ScheduleViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+       let vc = EditScheduleViewController.storyboardInitialViewController()
+        vc.schedule = schedules[indexPath.row]
+        if #available(iOS 13.0, *) {
+            vc.isModalInPresentation = true
+        }
+        let navController = UINavigationController(rootViewController: vc) // Creating a navigation
+        
+        self.present(navController, animated: true, completion: nil)
+    }
+
     
 }
