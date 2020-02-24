@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AWSAuthUI
 
 class SettingsViewController: UIViewController, StoryboardInstantiatable {
 
@@ -15,5 +16,10 @@ class SettingsViewController: UIViewController, StoryboardInstantiatable {
         title = "Settings"
     }
 
+    func signOut(){
+        AWSSignInManager.sharedInstance().logout { (anyObj: Any?, errorObj: Error?) in
+            print("signed out!");
+        }
+    }
 
 }

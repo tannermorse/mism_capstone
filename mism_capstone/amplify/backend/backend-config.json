@@ -1,0 +1,10 @@
+{
+	"auth": {
+		"mismcapstoneb9fcec1d": {
+			"service": "Cognito",
+			"providerPlugin": "awscloudformation",
+			"dependsOn": [],
+			"customAuth": false
+		}
+	}
+}

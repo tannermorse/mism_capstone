@@ -6,6 +6,9 @@ target 'mism_capstone' do
   use_frameworks!
 
   # Pods for mism_capstone
+  pod 'AWSUserPoolsSignIn'
+  pod 'AWSAuthUI'
+  pod 'AWSMobileClient'
 
   target 'mism_capstoneTests' do
     inherit! :search_paths

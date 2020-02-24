@@ -1,0 +1,8 @@
+{
+    "projectName": "mism_capstone",
+    "version": "3.0",
+    "frontend": "ios",
+    "providers": [
+        "awscloudformation"
+    ]
+}
