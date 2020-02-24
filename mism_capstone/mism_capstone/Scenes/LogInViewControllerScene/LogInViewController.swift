@@ -50,7 +50,7 @@ class LogInViewController: UIViewController {
         //config.addSignInButtonView(class: AWSFacebookSignInButton.self)
         //config.addSignInButtonView(class: AWSGoogleSignInButton.self)
         config.backgroundColor = backgroundColor
-        config.font = UIFont (name: "Helvetica Neue", size: 18)
+        config.font = UIFont (name: "Helvetica Neue", size: 14)
         //config.isBackgroundColorFullScreen = true
         //config.canCancel = true
         config.logoImage = buttonImage
