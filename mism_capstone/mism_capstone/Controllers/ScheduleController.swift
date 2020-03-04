@@ -10,9 +10,15 @@ import Foundation
 
 class ScheduleController {
     static let shared = ScheduleController()
-    var schedules = [Schedule(scheduleId: "1", scheduleName: "Afternoon Rinse", valveId: "1", minute: 30, hour: 13, daysOfweek: [1,2,3,5]), Schedule(scheduleId: "1", scheduleName: "Evening Extra", valveId: "1", minute: 30, hour: 19, daysOfweek: [2,4,5,6]), Schedule(scheduleId: "1", scheduleName: "Night Rade", valveId: "1", minute: 30, hour: 22, daysOfweek: [0,1,3,5,6])]
+    var schedules : [Schedule] = [] {
+           didSet{
+                NotificationCenter.default.post(name: .scheduleUpdate, object: nil)
+           }
+       }
     
-    func getSchedulesById(id: String) -> [Schedule] {
+    init() {}
+    
+    func getSchedulesByValveId(id: String) -> [Schedule] {
         return schedules.filter { $0.valveId == id }
     }
     
@@ -20,20 +26,50 @@ class ScheduleController {
         // send to api info to create a schedule
     }
     
-    func deleteSchedule(valveIds: [String], scheduleId: String) {
-        // send to api info to delete a schedule
-        //DELETE
+    func deleteSchedule(controllerId: Int, scheduleId: Int) {
+        let session = URLSession.shared
+        var request = URLRequest(url: URL(string: "https://0z02zemtz2.execute-api.us-east-2.amazonaws.com/Development/controllers/\(controllerId)/schedules/\(scheduleId)")!,timeoutInterval: 10)
+        request.httpMethod = "DELETE"
+        
+        let task = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
+            if error != nil {
+                print(error!)
+            } else {
+                if let httpResponse = response as? HTTPURLResponse {
+                    print("Delete Status code: \(httpResponse.statusCode)")
+                }
+            }
+        })
+            task.resume()
     }
     
     func setActiveState(scheduleId: String) {
         
     }
     
+    func updateScheduleById(schedule: Schedule) {
+        if let row = self.schedules.firstIndex(where: {$0.scheduleId! == schedule.scheduleId!}) {
+               schedules[row] = schedule
+        }
+    }
+    
+    func deleteScheduleById(schedule: Schedule) {
+        if let row = self.schedules.firstIndex(where: {$0.scheduleId! == schedule.scheduleId!}) {
+            schedules.remove(at: row)
+        }
+    }
+    
     func filteredSchedulesByDay(_ dayInt: Int? = nil) -> [Schedule] {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm:ss"
         if let dayValue = dayInt {
-            return schedules.filter {$0.daysOfweek.contains(dayValue)}
+            var schedulesSortedByDate = schedules.filter {$0.daysOfweek.contains(dayValue)}
+            schedulesSortedByDate.sort { dateFormatter.date(from: $0.startTime!)! < dateFormatter.date(from: $1.startTime!)! }
+            return schedulesSortedByDate
         } else {
-            return schedules.filter {$0.daysOfweek.contains(currentWeekday())}
+            var sched = schedules.filter {$0.daysOfweek.contains(currentWeekday())}
+            sched.sort { dateFormatter.date(from: $0.startTime!)! < dateFormatter.date(from: $1.startTime!)! }
+            return sched
         }
     }
     
@@ -64,6 +100,81 @@ class ScheduleController {
             }
         }
         return calender.standaloneWeekdaySymbols[day!]
+    }
+    
+    func convertFromMilitaryTime(startTime: String) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm:ss"
+        if let date = dateFormatter.date(from: startTime) {
+            dateFormatter.dateFormat = "h:mm a"
+             return dateFormatter.string(from: date)
+        } else {
+            return ""
+        }
+    }
+    
+    func getSchedulesByController(controllerId: Int) {
+        let session = URLSession.shared
+        var request = URLRequest(url: URL(string: "https://0z02zemtz2.execute-api.us-east-2.amazonaws.com/Development/controllers/\(controllerId)/schedules/")!,timeoutInterval: 10)
+        request.httpMethod = "GET"
+        
+        let task = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
+            if error != nil {
+                print(error!)
+            } else {
+                do {
+                    self.schedules = try JSONDecoder().decode([Schedule].self, from: data!)
+                } catch {
+                    print("could not serialize schedule data")
+                }
+
+            }
+        })
+            task.resume()
+    }
+    
+    func updateScheduledDays(schedule: Schedule) -> Schedule {
+        var tempSchedule = Schedule(controller_id: schedule.controller_id!, scheduleName: schedule.scheduleName!, valveId: schedule.valveId!, startTime: schedule.startTime!, daysOfweek: schedule.daysOfweek, duration: schedule.duration!, enabled: schedule.enabled)
+        
+        for i in schedule.daysOfweek {
+            switch i {
+            case 1:
+                tempSchedule.sunday = true
+            case 2:
+                tempSchedule.monday = true
+            case 3:
+                tempSchedule.tuesday = true
+            case 4:
+                tempSchedule.wednesday = true
+            case 5:
+                tempSchedule.thursday = true
+            case 6:
+                tempSchedule.friday = true
+            default:
+                tempSchedule.saturday = true
+            }
+        }
+        
+        return tempSchedule
+    }
+    
+    func addSchedule(schedule: Schedule) {
+        schedules.append(schedule)
+        if let url = URL(string: "https://0z02zemtz2.execute-api.us-east-2.amazonaws.com/Development/controllers/\(schedule.controller_id!)/schedules") {
+            
+            var request = URLRequest(url: url, timeoutInterval: 10)
+            request.httpMethod = "POST"
+            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.httpBody = updateScheduledDays(schedule: schedule).encodedJsonBody()
+            let task = URLSession.shared.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
+                if let r = response as? HTTPURLResponse {
+                    // do something like a fading pop up that says you schedule was adding
+                    print(r.statusCode)
+                }
+            })
+            task.resume()
+            
+        }
     }
     
 }

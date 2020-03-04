@@ -8,20 +8,48 @@
 
 import UIKit
 
+extension Notification.Name {
+    static let scheduleUpdate = Notification.Name("scheduleUpdate")
+}
+
 class ScheduleViewController: UIViewController, StoryboardInstantiatable {
     
     @IBOutlet weak var tableView: UITableView!
     
-    var currentDay = ScheduleController.shared.currentWeekday()
-    var schedules: [Schedule]!
+    var currentDay = 0
+    var schedules = [Schedule]()
+    let scheduleController = ScheduleController.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Today's Schedule"
+        setupNotifications()
+        scheduleController.getSchedulesByController(controllerId: 1)
+        currentDay = scheduleController.currentWeekday()
+        schedules = scheduleController.filteredSchedulesByDay()
         navigationController?.navigationBar.setThemeTextAttributes()
         tableView.register(ScheduleTableViewCell.self, forCellReuseIdentifier: "ScheduleTableViewCell")
-        schedules = ScheduleController.shared.filteredSchedulesByDay()
         setupNavButtons()
+    }
+    
+    func setupNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadTableData), name: .scheduleUpdate, object: nil)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        NotificationCenter.default.removeObserver(self, name: .scheduleUpdate, object: nil)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        schedules = ScheduleController.shared.filteredSchedulesByDay(currentDay)
+        tableView.reloadData()
+    }
+    
+    @objc func reloadTableData() {
+        DispatchQueue.main.sync {
+            schedules = ScheduleController.shared.filteredSchedulesByDay(currentDay)
+            tableView.reloadData()
+        }
     }
     
     func setupNavButtons() {
@@ -60,26 +88,64 @@ class ScheduleViewController: UIViewController, StoryboardInstantiatable {
 }
 
 extension ScheduleViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let view = UIView()
+        let addScheduleButton = UIButton()
+    
+        view.addSubview(addScheduleButton)
+        addScheduleButton.anchor(top: nil, leading: nil, trailing: view.trailingAnchor, bottom: nil, centerX: nil, centerY: view.centerYAnchor, size: .init(width: 44, height: 44))
+        if #available(iOS 13.0, *) {
+            let largeConfiguration = UIImage.SymbolConfiguration(scale: .large)
+            addScheduleButton.setImage(UIImage(systemName: "calendar.badge.plus", withConfiguration: largeConfiguration), for: .normal)
+        } else {
+            addScheduleButton.setTitle("Add Schudule", for: .normal)
+        }
+        
+        addScheduleButton.addTarget(self, action: #selector(addSchedulePressed), for: .touchUpInside)
+        return view
+    }
+    
+    @objc func addSchedulePressed() {
+        //present add schdule capability
+        let newSchedule = Schedule(controller_id: 1, scheduleName: "", valveId: "", startTime: "18:00:00", daysOfweek: [currentDay], duration: 15, enabled: true)
+        presentPresentEditScheduleController(schedule: newSchedule, isAddingSchedule: true)
+        
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 44
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return schedules.count
+        return schedules.count != 0 ? schedules.count : 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: ScheduleCell.identifier, for: indexPath) as! ScheduleTableViewCell
-        cell.configureCell(schedule: schedules[indexPath.row])
-        return cell
+        if schedules.count != 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: ScheduleCell.identifier, for: indexPath) as! ScheduleTableViewCell
+            cell.configureCell(schedule: schedules[indexPath.row])
+            return cell
+        } else {
+            let cell = UITableViewCell()
+            cell.textLabel?.text = "There are no schedules running today..."
+            return cell
+        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-       let vc = EditScheduleViewController.storyboardInitialViewController()
-        vc.schedule = schedules[indexPath.row]
-        if #available(iOS 13.0, *) {
-            vc.isModalInPresentation = true
+        if schedules.count != 0 {
+            presentPresentEditScheduleController(schedule: schedules[indexPath.row], isAddingSchedule: false)
         }
-        let navController = UINavigationController(rootViewController: vc) // Creating a navigation
-        
+    }
+    
+    func presentPresentEditScheduleController(schedule: Schedule, isAddingSchedule: Bool) {
+        let vc = EditScheduleViewController.storyboardInitialViewController()
+        vc.schedule = schedule
+        vc.isAddingSchedule = isAddingSchedule
+        let navController = UINavigationController(rootViewController: vc)
+        navController.modalPresentationStyle = .fullScreen
         self.present(navController, animated: true, completion: nil)
     }
 
-    
 }

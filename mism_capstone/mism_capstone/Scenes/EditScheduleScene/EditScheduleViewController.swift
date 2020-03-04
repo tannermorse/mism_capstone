@@ -13,15 +13,18 @@ class EditScheduleViewController: UIViewController, StoryboardInstantiatable {
     @IBOutlet weak var tableView: UITableView!
     
     var schedule: Schedule!
+    var isAddingSchedule = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigationBar()
         tableView.separatorStyle = .none
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         title = schedule?.scheduleName
+        tableView.reloadData()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -32,7 +35,7 @@ class EditScheduleViewController: UIViewController, StoryboardInstantiatable {
         navigationController?.navigationBar.setThemeTextAttributes()
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(dismissView))
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(dismissView))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: isAddingSchedule ? "Save" : "Done", style: .done, target: self, action: #selector(donePressed))
         navigationController?.navigationBar.tintColor = UIColor.themeBlue()
     }
     
@@ -41,8 +44,14 @@ class EditScheduleViewController: UIViewController, StoryboardInstantiatable {
     }
     
     @objc func donePressed() {
-        //call api to change everything on backend
-        dismissView()
+        if self.isAddingSchedule {
+            ScheduleController.shared.addSchedule(schedule: schedule)
+            dismissView()
+        } else {
+            //call api to change everything on backend
+            ScheduleController.shared.updateScheduleById(schedule: schedule)
+            dismissView()
+        }
     }
 
 }
@@ -72,7 +81,7 @@ extension EditScheduleViewController: UITableViewDelegate, UITableViewDataSource
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 6
+        return isAddingSchedule ? 4 : 6
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -80,8 +89,8 @@ extension EditScheduleViewController: UITableViewDelegate, UITableViewDataSource
     }
     
     @objc func switchValueChanged(sender: UISwitch) {
-        print(sender.isOn)
-        ScheduleController.shared.setActiveState(scheduleId: schedule!.scheduleId)
+        ScheduleController.shared.setActiveState(scheduleId: String(schedule!.scheduleId!))
+        schedule.enabled = sender.isOn
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -99,15 +108,19 @@ extension EditScheduleViewController: UITableViewDelegate, UITableViewDataSource
         if indexPath.section == 0 {
             let activeSwitch = UISwitch()
             
-            activeSwitch.isOn = true // set this to schdule.isActive
+            activeSwitch.isOn = schedule.enabled // set this to schdule.isActive
             activeSwitch.addTarget(self, action: #selector(switchValueChanged), for: .valueChanged)
             cell.accessoryView = activeSwitch
             
             cell.textLabel?.text = "Enable This Schedule"
         } else if indexPath.section == 1 {
-            if let time = schedule?.hour {
-                cell.textLabel!.text = String(time)
+            
+            if let startTime = schedule.startTime {
+                cell.textLabel!.text = ScheduleController.shared.convertFromMilitaryTime(startTime: schedule.startTime!)
+            } else {
+                cell.textLabel!.text = "Choose start time"
             }
+        
             if #available(iOS 13.0, *) {
                 cell.imageView?.image = UIImage(systemName: "clock")
                 cell.imageView?.tintColor = UIColor.themeBlue()
@@ -117,7 +130,11 @@ extension EditScheduleViewController: UITableViewDelegate, UITableViewDataSource
             cell.accessoryType = .disclosureIndicator
         } else if indexPath.section == 2 {
             if let id =  schedule?.valveId {
-                cell.textLabel?.text = id
+                if id == "" {
+                     cell.textLabel?.text = "No valves"
+                } else {
+                     cell.textLabel?.text = id
+                }
             }
         } else if indexPath.section == 3 {
             cell.textLabel?.text = "Add Valves To This Schedule"
@@ -142,14 +159,16 @@ extension EditScheduleViewController: UITableViewDelegate, UITableViewDataSource
             print("add valve")
         } else if indexPath.section == 4 {
             print("test schedule")
-            testSchedule(scheduleId: schedule.scheduleId)
+            testSchedule(scheduleId: String(schedule.scheduleId!))
         } else if indexPath.section == 5 {
-            AlertService.shared.deleteAlert(target: self, title: "Delete: \(schedule.scheduleName)?", message: "This is permanent. You will have to recreate this scheudle", completion: delete)
+            AlertService.shared.deleteAlert(target: self, title: "Delete \(schedule.scheduleName ?? "this schedule")?", message: "This is permanent. You will have to recreate this scheudle", completion: delete)
         }
     }
     
     func delete() {
         //TODO: call delete schedule api
+        ScheduleController.shared.deleteScheduleById(schedule: schedule)
+        ScheduleController.shared.deleteSchedule(controllerId: schedule.controller_id!, scheduleId: schedule.scheduleId!)
         self.dismissView()
     }
     
