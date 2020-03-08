@@ -15,7 +15,7 @@ class ScheduleTableViewCell: UITableViewCell {
     var schedStartLabel = UILabel()
     var schedNameLabel = UILabel()
     var vStack = UIStackView()
-    var schedule: Schedule?
+    var schedule: Schedule!
     
     func didSelect(viewController: UIViewController) {
         let vc = EditScheduleViewController.storyboardInitialViewController()
@@ -52,9 +52,16 @@ class ScheduleTableViewCell: UITableViewCell {
         selectionStyle = .none
         outerView.backgroundColor = UIColor.systemGray.withAlphaComponent(0.1)
         outerView.layer.cornerRadius = 25
-        setupSchedImageView(image: getTimeOfDayImage(hour: schedule.hour))
-        setupSchedStartLabel(startTime: String(schedule.hour), days: schedule.daysOfweek)
-        setupSchedNameLabel(withName: schedule.scheduleName)
+        if let time = schedule.startTime {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "HH:mm:ss"
+            if let date = dateFormatter.date(from: time) {
+                let hour = Calendar.current.component(.hour, from: date)
+                setupSchedImageView(image: getTimeOfDayImage(hour: hour))
+            }
+        }
+        setupSchedStartLabel(startTime: ScheduleController.shared.convertFromMilitaryTime(startTime: schedule.startTime!), days: schedule.daysOfweek)
+        setupSchedNameLabel(withName: (schedule.scheduleName != nil) ? schedule.scheduleName! : "")
         setupStackView()
     }
     
@@ -79,8 +86,8 @@ class ScheduleTableViewCell: UITableViewCell {
     
     func setupSchedStartLabel(startTime: String, days: [Int]) {
         schedStartLabel.font = themedFont.primaryLabel
-        schedStartLabel.numberOfLines = 2
-        schedStartLabel.text = "Start time: \(startTime) \nDays: \(ScheduleController.shared.getShortWeekDays(days: days))"
+        schedStartLabel.numberOfLines = 3
+        schedStartLabel.text = "Start time: \(startTime) \nDays: \(ScheduleController.shared.getShortWeekDays(days: days)) \nDuration: \(Int(schedule.duration!)) minutes"
     }
     
     func setupSchedNameLabel(withName scheduleName: String) {

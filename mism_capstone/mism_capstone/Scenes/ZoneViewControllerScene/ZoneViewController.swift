@@ -54,7 +54,7 @@ extension ZoneViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        pushDetailZoneViewController(valve: Valve(id: "1", zoneName: "Front Yard", imageUrl: "frontyard", latitude: 2.01, longitude: 2.01, receiverId: "123", schedules: [Schedule(scheduleId: "1", scheduleName: "Morning Dew", valveId: "1", minute: 30, hour: 6, daysOfweek: [2,3,5]), Schedule(scheduleId: "1", scheduleName: "Afternoon Rinse", valveId: "1", minute: 30, hour: 13, daysOfweek: [2,3,5]), Schedule(scheduleId: "1", scheduleName: "Evening Extra", valveId: "1", minute: 30, hour: 19, daysOfweek: [2,3,5]), Schedule(scheduleId: "1", scheduleName: "Night Rade", valveId: "1", minute: 30, hour: 22, daysOfweek: [2,3,5])]))
+        pushDetailZoneViewController(valve: Valve(id: "1", zoneName: "Front Yard", imageUrl: "frontyard", latitude: 2.01, longitude: 2.01, receiverId: "123", schedules: []))
     }
     
     
