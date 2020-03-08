@@ -22,6 +22,9 @@ class ScheduleViewController: UIViewController, StoryboardInstantiatable {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if let navigationController = self.navigationController {
+            LogInHelper.shared.showSignIn(navController: navigationController)
+        }
         title = "Today's Schedule"
         setupNotifications()
         scheduleController.getSchedulesByController(controllerId: 1)

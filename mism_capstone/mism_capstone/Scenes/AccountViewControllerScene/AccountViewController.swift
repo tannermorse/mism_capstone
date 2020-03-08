@@ -63,6 +63,13 @@ extension AccountViewController: UITableViewDelegate, UITableViewDataSource {
         if indexPath.row == 0 {
             pushSettingsViewController()
         }
+        
+        if indexPath.row == 1 {
+            if let navController = self.navigationController {
+                LogInHelper.shared.signOut(navController: navController)
+            }
+        }
+        
     }
     
     

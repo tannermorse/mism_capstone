@@ -9,8 +9,7 @@
 /* Begin PBXBuildFile section */
 		262F53B8C05B8003D83FB938 /* Pods_mism_capstone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2D0129ED85CDA0E68E1300A /* Pods_mism_capstone.framework */; };
 		B0833357CF1B7A91C04198C0 /* Pods_mism_capstoneTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D3F65BDE4E6CB1D36425A83 /* Pods_mism_capstoneTests.framework */; };
-		D44A5A2A2404419B0043FBCC /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44A5A292404419B0043FBCC /* LogInViewController.swift */; };
-		D44A5A2C240441BA0043FBCC /* LoginViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D44A5A2B240441BA0043FBCC /* LoginViewController.storyboard */; };
+		D44A5A2A2404419B0043FBCC /* LogInHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44A5A292404419B0043FBCC /* LogInHelper.swift */; };
 		F31950A523F36293001B5918 /* AlertService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31950A423F36293001B5918 /* AlertService.swift */; };
 		F32B7B4A23CFEF36007114B7 /* ZoneTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32B7B4923CFEF36007114B7 /* ZoneTableViewCell.swift */; };
 		F32B7B4D23D00B6C007114B7 /* DetailZoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32B7B4C23D00B6C007114B7 /* DetailZoneViewController.swift */; };
@@ -64,8 +63,7 @@
 		86E76D7F7F7591A411D759B6 /* Pods-mism_capstoneTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mism_capstoneTests.debug.xcconfig"; path = "Target Support Files/Pods-mism_capstoneTests/Pods-mism_capstoneTests.debug.xcconfig"; sourceTree = "<group>"; };
 		9D3F65BDE4E6CB1D36425A83 /* Pods_mism_capstoneTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_mism_capstoneTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C401E5C19BBC804E6E636FBD /* Pods-mism_capstone.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mism_capstone.release.xcconfig"; path = "Target Support Files/Pods-mism_capstone/Pods-mism_capstone.release.xcconfig"; sourceTree = "<group>"; };
-		D44A5A292404419B0043FBCC /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
-		D44A5A2B240441BA0043FBCC /* LoginViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginViewController.storyboard; sourceTree = "<group>"; };
+		D44A5A292404419B0043FBCC /* LogInHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInHelper.swift; sourceTree = "<group>"; };
 		F2D0129ED85CDA0E68E1300A /* Pods_mism_capstone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_mism_capstone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F31950A423F36293001B5918 /* AlertService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertService.swift; sourceTree = "<group>"; };
 		F32B7B4923CFEF36007114B7 /* ZoneTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoneTableViewCell.swift; sourceTree = "<group>"; };
@@ -148,15 +146,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		D44A5A2D240441C80043FBCC /* LogInViewControllerScene */ = {
-			isa = PBXGroup;
-			children = (
-				D44A5A292404419B0043FBCC /* LogInViewController.swift */,
-				D44A5A2B240441BA0043FBCC /* LoginViewController.storyboard */,
-			);
-			path = LogInViewControllerScene;
-			sourceTree = "<group>";
-		};
 		F32B7B4B23D00B2B007114B7 /* DetailZoneViewControllerScene */ = {
 			isa = PBXGroup;
 			children = (
@@ -217,6 +206,7 @@
 				F32BEDCF23C38C6100E1C50E /* Info.plist */,
 				F32BEDC723C38C5F00E1C50E /* mism_capstone.xcdatamodeld */,
 				F31950A423F36293001B5918 /* AlertService.swift */,
+				D44A5A292404419B0043FBCC /* LogInHelper.swift */,
 			);
 			path = mism_capstone;
 			sourceTree = "<group>";
@@ -282,7 +272,6 @@
 				F36C75AC23C6448D009BDA73 /* ZoneViewControllerScene */,
 				F32BEDF023C3916700E1C50E /* MainViewControllerScene */,
 				F36C75A523C398DC009BDA73 /* ScheduleViewControllerScene */,
-				D44A5A2D240441C80043FBCC /* LogInViewControllerScene */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -426,7 +415,6 @@
 				F32BEDCB23C38C6100E1C50E /* Assets.xcassets in Resources */,
 				F3F41BD123E0932400F2D596 /* EditScheduleViewController.storyboard in Resources */,
 				F373FA1D24156CD60010F91F /* awsconfiguration.json in Resources */,
-				D44A5A2C240441BA0043FBCC /* LoginViewController.storyboard in Resources */,
 				F32BEDC623C38C5F00E1C50E /* MainViewController.storyboard in Resources */,
 				F36C75AE23C644CB009BDA73 /* ZoneViewController.storyboard in Resources */,
 			);
@@ -530,7 +518,7 @@
 				F32BEDEB23C38F8900E1C50E /* +UIStoryboard.swift in Sources */,
 				F3F41BCA23DE408400F2D596 /* +UIImageView.swift in Sources */,
 				F32BEDBF23C38C5F00E1C50E /* AppDelegate.swift in Sources */,
-				D44A5A2A2404419B0043FBCC /* LogInViewController.swift in Sources */,
+				D44A5A2A2404419B0043FBCC /* LogInHelper.swift in Sources */,
 				F32B7B4A23CFEF36007114B7 /* ZoneTableViewCell.swift in Sources */,
 				F3F41BCF23E0931700F2D596 /* EditScheduleViewController.swift in Sources */,
 				F32B7B4D23D00B6C007114B7 /* DetailZoneViewController.swift in Sources */,

@@ -119,6 +119,9 @@ class ScheduleController {
         request.httpMethod = "GET"
         
         let task = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
+            if let status = response as? HTTPURLResponse {
+                print(status.statusCode)
+            }
             if error != nil {
                 print(error!)
             } else {
@@ -138,17 +141,17 @@ class ScheduleController {
         
         for i in schedule.daysOfweek {
             switch i {
-            case 1:
+            case 0:
                 tempSchedule.sunday = true
-            case 2:
+            case 1:
                 tempSchedule.monday = true
-            case 3:
+            case 2:
                 tempSchedule.tuesday = true
-            case 4:
+            case 3:
                 tempSchedule.wednesday = true
-            case 5:
+            case 4:
                 tempSchedule.thursday = true
-            case 6:
+            case 5:
                 tempSchedule.friday = true
             default:
                 tempSchedule.saturday = true

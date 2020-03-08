@@ -10,33 +10,33 @@ import UIKit
 import AWSAuthCore
 import AWSAuthUI
 
-class LogInViewController: UIViewController {
+class LogInHelper {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        showSignIn()
-    }
+    static let shared = LogInHelper()
     
-    func showSignIn(){
-        
-        AWSSignInManager.sharedInstance().logout { (anyObj: Any?, errorObj: Error?) in
-            print("signed out!");
-        }
-        
+    func showSignIn(navController: UINavigationController){
         if !AWSSignInManager.sharedInstance().isLoggedIn {
-            AWSAuthUIViewController.presentViewController(with: self.navigationController!, configuration: buildUIConfig(), completionHandler: {
+            AWSAuthUIViewController.presentViewController(with: navController, configuration: buildUIConfig(), completionHandler: {
                     (provider: AWSSignInProvider, error: Error?) in
                     if error != nil {
                         print("Error occurred: \(String(describing: error))")
                     } else {
                         print("Logged in with provider: \(provider.identityProviderName) with Token: \(provider.token())")
-                        self.pushMain()
+                        navController.dismiss(animated: true, completion: nil)
                     }
             })
         } else {
-            pushMain()
+            navController.dismiss(animated: true, completion: nil)
         }
+    }
+    
+    func signOut(navController: UINavigationController){
+        AWSSignInManager.sharedInstance().logout { (anyObj: Any?, errorObj: Error?) in
+            print("logged out")
+        }
+        
+        LogInHelper.shared.showSignIn(navController: navController)
+        
     }
     
     func buildUIConfig() -> AWSAuthUIConfiguration {
@@ -56,13 +56,6 @@ class LogInViewController: UIViewController {
         config.logoImage = buttonImage
         
         return config
-    }
-    
-    func pushMain() {
-        
-        let mainVC = MainViewController.storyboardInitialViewController()
-        navigationController?.pushViewController(mainVC, animated: true)
-        self.navigationController?.navigationBar.isHidden = true
     }
 }
 
