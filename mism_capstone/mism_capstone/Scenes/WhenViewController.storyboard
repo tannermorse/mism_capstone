@@ -18,6 +18,9 @@
                         <subviews>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="A6b-hO-pcI">
                                 <rect key="frame" x="20" y="145.5" width="362" height="216"/>
+                                <connections>
+                                    <action selector="startTimeChanged:" destination="qdL-BI-P9D" eventType="valueChanged" id="RCu-ld-ozV"/>
+                                </connections>
                             </datePicker>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Repeat:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8JD-fw-Oj1">
                                 <rect key="frame" x="34" y="371.5" width="59" height="31"/>
@@ -85,7 +88,7 @@
                                     <constraint firstAttribute="width" constant="270" id="hiA-J3-Smd"/>
                                 </constraints>
                             </stackView>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.0" maxValue="5" translatesAutoresizingMaskIntoConstraints="NO" id="0Wu-9q-mJ6">
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="15" minValue="1" maxValue="90" translatesAutoresizingMaskIntoConstraints="NO" id="0Wu-9q-mJ6">
                                 <rect key="frame" x="52" y="498" width="178.5" height="31"/>
                                 <color key="tintColor" red="0.40000000000000002" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -96,10 +99,10 @@
                                     <action selector="durationChanged:" destination="qdL-BI-P9D" eventType="valueChanged" id="DX0-ts-Ekd"/>
                                 </connections>
                             </slider>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="0l7-Ao-feY">
-                                <rect key="frame" x="248.5" y="498" width="35" height="26"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="0l7-Ao-feY">
+                                <rect key="frame" x="248.5" y="498" width="20" height="26"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="35" id="UJ4-eB-7DJ"/>
+                                    <constraint firstAttribute="width" constant="20" id="UJ4-eB-7DJ"/>
                                     <constraint firstAttribute="height" constant="26" id="hTl-cB-aJi"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -121,8 +124,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hour(s)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="BYU-cB-Yfu">
-                                <rect key="frame" x="293.5" y="498" width="58.5" height="26"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Minutes" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="BYU-cB-Yfu">
+                                <rect key="frame" x="278.5" y="498" width="58.5" height="26"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="58.5" id="5E9-gF-5Ei"/>
                                     <constraint firstAttribute="height" constant="26" id="nFV-fh-a1J"/>
@@ -161,6 +164,7 @@
                         <outlet property="durationTitleLabel" destination="rhP-zA-9g1" id="kO8-nL-zgN"/>
                         <outlet property="repeatLabel" destination="8JD-fw-Oj1" id="aeD-UG-lBY"/>
                         <outlet property="timeLabel" destination="fae-Fc-mA3" id="ywR-ha-hMv"/>
+                        <outlet property="timePicker" destination="A6b-hO-pcI" id="yF7-Qo-7NN"/>
                         <outletCollection property="dayButtons" destination="J67-Nl-wEj" collectionClass="NSMutableArray" id="HXp-iR-ec0"/>
                         <outletCollection property="dayButtons" destination="GpE-Xo-BN0" collectionClass="NSMutableArray" id="aoG-4Z-FXc"/>
                         <outletCollection property="dayButtons" destination="an6-yj-wlL" collectionClass="NSMutableArray" id="0rm-8J-c2I"/>
