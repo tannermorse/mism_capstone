@@ -1,0 +1,20 @@
+{
+    "mismenv": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-mismcapstone-mismenv-95155-authRole",
+            "UnauthRoleArn": "arn:aws:iam::934581509444:role/amplify-mismcapstone-mismenv-95155-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::934581509444:role/amplify-mismcapstone-mismenv-95155-authRole",
+            "Region": "us-east-2",
+            "DeploymentBucketName": "amplify-mismcapstone-mismenv-95155-deployment",
+            "UnauthRoleName": "amplify-mismcapstone-mismenv-95155-unauthRole",
+            "StackName": "amplify-mismcapstone-mismenv-95155",
+            "StackId": "arn:aws:cloudformation:us-east-2:934581509444:stack/amplify-mismcapstone-mismenv-95155/f8893710-5725-11ea-8109-0a18862e0c0c",
+            "AmplifyAppId": "d3lqghvfw8hejr"
+        },
+        "categories": {
+            "auth": {
+                "mismcapstoneb9fcec1d": {}
+            }
+        }
+    }
+}
