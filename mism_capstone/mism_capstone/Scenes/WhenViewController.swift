@@ -27,7 +27,18 @@ class WhenViewController: UIViewController, StoryboardInstantiatable, UINavigati
         }
     }
     
-    var isOn = [Int]()
+    var isOn = [Int]() {
+        didSet {
+            if isOn.count == 0 {
+                navigationController?.navigationBar.isUserInteractionEnabled = false
+                navigationController?.navigationBar.tintColor = UIColor.lightGray
+            } else {
+                navigationController?.navigationBar.isUserInteractionEnabled = true
+                navigationController?.navigationBar.tintColor = UIColor.systemBlue
+
+            }
+        }
+    }
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var repeatLabel: UILabel!
     @IBOutlet weak var durationSlider: UISlider!

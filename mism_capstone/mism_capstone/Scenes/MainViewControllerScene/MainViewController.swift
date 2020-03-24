@@ -10,15 +10,9 @@ import UIKit
 
 class MainViewController: UITabBarController, StoryboardInstantiatable {
 
-  
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-
     }
     
-
-    
-
 }
 

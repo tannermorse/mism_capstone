@@ -16,7 +16,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Zu0-lg-Y0H">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Zu0-lg-Y0H">
                                 <rect key="frame" x="0.0" y="44" width="414" height="200"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Zu0-lg-Y0H" secondAttribute="height" multiplier="207:100" id="85y-Rb-jRa"/>
@@ -51,18 +51,30 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qhp-nt-sfw">
+                                <rect key="frame" x="379" y="216" width="30" height="23"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" image="camera" catalog="system">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="bold"/>
+                                </state>
+                                <connections>
+                                    <action selector="addImagePressedWithSender:" destination="vwN-cf-IrI" eventType="touchUpInside" id="ggH-UG-cbP"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="S5e-yO-HIc" firstAttribute="top" secondItem="Zu0-lg-Y0H" secondAttribute="bottom" constant="15" id="2aQ-bU-XYs"/>
                             <constraint firstItem="Zu0-lg-Y0H" firstAttribute="leading" secondItem="nsN-tG-A0R" secondAttribute="leading" id="8WD-er-M0G"/>
                             <constraint firstItem="5Sf-PS-b4T" firstAttribute="bottom" secondItem="nsN-tG-A0R" secondAttribute="bottom" id="8tr-zg-gkk"/>
+                            <constraint firstItem="Zu0-lg-Y0H" firstAttribute="trailing" secondItem="qhp-nt-sfw" secondAttribute="trailing" constant="5" id="9K6-CY-4LG"/>
                             <constraint firstItem="5Sf-PS-b4T" firstAttribute="leading" secondItem="nsN-tG-A0R" secondAttribute="leading" constant="20" id="A1g-gz-xWu"/>
                             <constraint firstItem="fYs-J1-Zn8" firstAttribute="top" secondItem="4fC-zL-ndW" secondAttribute="bottom" constant="-11" id="F3m-5o-ZD6"/>
                             <constraint firstItem="4fC-zL-ndW" firstAttribute="top" secondItem="Zu0-lg-Y0H" secondAttribute="bottom" constant="8" id="GHY-Wl-a2l"/>
                             <constraint firstItem="fYs-J1-Zn8" firstAttribute="leading" secondItem="nsN-tG-A0R" secondAttribute="leading" constant="20" id="HFI-0I-49b"/>
                             <constraint firstItem="nsN-tG-A0R" firstAttribute="trailing" secondItem="fYs-J1-Zn8" secondAttribute="trailing" constant="20" id="KRi-sm-MFg"/>
                             <constraint firstItem="nsN-tG-A0R" firstAttribute="trailing" secondItem="S5e-yO-HIc" secondAttribute="trailing" constant="20" id="Kys-VX-EH2"/>
+                            <constraint firstItem="Zu0-lg-Y0H" firstAttribute="bottom" secondItem="qhp-nt-sfw" secondAttribute="bottom" constant="5" id="Tj9-3f-vx2"/>
                             <constraint firstItem="5Sf-PS-b4T" firstAttribute="top" secondItem="fYs-J1-Zn8" secondAttribute="bottom" constant="10" id="WPS-xg-2n9"/>
                             <constraint firstItem="Zu0-lg-Y0H" firstAttribute="top" secondItem="nsN-tG-A0R" secondAttribute="top" id="Ze7-Z0-2GM"/>
                             <constraint firstItem="nsN-tG-A0R" firstAttribute="trailing" secondItem="5Sf-PS-b4T" secondAttribute="trailing" constant="20" id="bOS-a7-Uuv"/>
@@ -72,6 +84,7 @@
                         <viewLayoutGuide key="safeArea" id="nsN-tG-A0R"/>
                     </view>
                     <connections>
+                        <outlet property="addImageButton" destination="qhp-nt-sfw" id="qzB-ip-rWJ"/>
                         <outlet property="scheduleLabel" destination="fYs-J1-Zn8" id="NaM-vu-Hbz"/>
                         <outlet property="tableView" destination="5Sf-PS-b4T" id="lAz-cn-666"/>
                         <outlet property="testLabel" destination="4fC-zL-ndW" id="3Lg-Ns-BUJ"/>
@@ -84,4 +97,7 @@
             <point key="canvasLocation" x="11.594202898550726" y="-204.24107142857142"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="camera" catalog="system" width="64" height="48"/>
+    </resources>
 </document>
