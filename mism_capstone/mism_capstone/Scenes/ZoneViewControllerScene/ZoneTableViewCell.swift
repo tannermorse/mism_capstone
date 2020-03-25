@@ -39,7 +39,9 @@ class ZoneTableViewCell: UITableViewCell {
     func setupImageView(imageUrl: String) {
         zoneImage.anchor(top: nil, leading: outerView.leadingAnchor, trailing: nil, bottom: nil, centerX: nil, centerY: outerView.centerYAnchor, padding: .init(top: 10, left: 10, bottom: 10, right: 10),size: .init(width: 70, height: 70))
     
-        zoneImage.load(url: URL(string: "https://images2.minutemediacdn.com/image/upload/c_fill,g_auto,h_1248,w_2220/f_auto,q_auto,w_1100/v1555274667/shape/mentalfloss/istock-498015683.jpg")!)
+        if let url = URL(string: imageUrl) {
+               zoneImage.load(url: url, defaultImage: UIImage(named: "launchImage")!)
+        }
         zoneImage.clipsToBounds = true
         zoneImage.layer.cornerRadius = 35
         zoneImage.isUserInteractionEnabled = false

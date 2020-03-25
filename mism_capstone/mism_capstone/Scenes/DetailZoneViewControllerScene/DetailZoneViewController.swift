@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DetailZoneViewController: UIViewController, StoryboardInstantiatable, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class DetailZoneViewController: UIViewController, StoryboardInstantiatable {
     @IBOutlet weak var zoneImageView: UIImageView!
     @IBOutlet weak var addImageButton: UIButton!
     @IBOutlet weak var scheduleLabel: UILabel!
@@ -18,7 +18,13 @@ class DetailZoneViewController: UIViewController, StoryboardInstantiatable, UIIm
     @IBOutlet weak var testLabel: UILabel!
     
     @IBAction func addImagePressed(sender: UIButton) {
-        presentPhotoSelectorActionSheet()
+        CameraHandler.shared.presentPhotoSelectorActionSheet(vc: self)
+        CameraHandler.shared.imagePickedBlock = { (image) in
+            
+            CameraHandler.shared.uploadImageToS3(image: image, controllerId: self.valve!.receiverId, valveId: self.valve!.id)
+            /* get your image here */
+            self.zoneImageView.image = image
+        }
     }
     
     var valve: Valve?
@@ -28,7 +34,11 @@ class DetailZoneViewController: UIViewController, StoryboardInstantiatable, UIIm
         scheduleLabel.font = themedFont.titleLabel
         testLabel.font = themedFont.viewLabel
         navigationController?.navigationBar.setThemeTextAttributes()
-        zoneImageView.load(url: URL(string: "https://images2.minutemediacdn.com/image/upload/c_fill,g_auto,h_1248,w_2220/f_auto,q_auto,w_1100/v1555274667/shape/mentalfloss/istock-498015683.jpg")!)
+        
+        if let url = URL(string: "https://capstoneimagebucket.s3.us-east-2.amazonaws.com/images/\(valve!.receiverId)/\(valve!.id)/image.jpg") {
+               zoneImageView.load(url: url, defaultImage: UIImage(named: "launchImage")!)
+        }
+        
         
         tableView.register(ScheduleTableViewCell.self, forCellReuseIdentifier: "ScheduleTableViewCell")
         tableView.separatorStyle = .none
@@ -37,57 +47,7 @@ class DetailZoneViewController: UIViewController, StoryboardInstantiatable, UIIm
         addImageButton.backgroundColor = UIColor.white.withAlphaComponent(0.6)
         
     }
-    
-    func presentPhotoSelectorActionSheet() {
-        let actionSheet = UIAlertController(title: "Choose Photo", message: nil, preferredStyle: .actionSheet)
-        
-        let dismissAction = UIAlertAction(title: "Dismiss", style: .default, handler: nil)
-        
-        let takePhotoAction = UIAlertAction(title: "Take picture", style: .default, handler: { void in
-            self.openCamera()
-        })
-        let pickPhotoAction = UIAlertAction(title: "Choose picture from library", style: .default, handler: { void in
-            self.openPhotoLibrary()
-        })
-        
-        if #available(iOS 13.0, *) {
-            let cameraImage = UIImage(systemName: "camera")
-            takePhotoAction.setValue(cameraImage, forKey: "image")
-            let photoImage = UIImage(systemName: "photo")
-            pickPhotoAction.setValue(photoImage, forKey: "image")
-            
-        } else {
-            // Fallback on earlier versions
-        }
-        
-        actionSheet.addAction(takePhotoAction)
-        actionSheet.addAction(pickPhotoAction)
-        actionSheet.addAction(dismissAction)
-        
-        self.present(actionSheet, animated: true, completion: nil)
-    }
-    
-    func openCamera() {
-        if UIImagePickerController.isSourceTypeAvailable(.camera){
-            let myPickerController = UIImagePickerController()
-            myPickerController.delegate = self
-            myPickerController.sourceType = .camera
-            self.present(myPickerController, animated: true, completion: nil)
-        }
-        
-    }
-    
-    func openPhotoLibrary() {
-        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
-            let myPickerController = UIImagePickerController()
-            myPickerController.delegate = self
-            myPickerController.sourceType = .photoLibrary
-            self.present(myPickerController, animated: true, completion: nil)
-        }
-    }
-    
 
-    
     func setupEditButton() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(editPressed))
     }
@@ -95,7 +55,6 @@ class DetailZoneViewController: UIViewController, StoryboardInstantiatable, UIIm
     @objc func editPressed() {
         //TODO: add functionality to edit zone
     }
-
 
 }
 

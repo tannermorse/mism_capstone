@@ -49,12 +49,14 @@ extension ZoneViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ZoneTableViewCell", for: indexPath) as! ZoneTableViewCell
-        cell.configureCell(title: zoneCells[indexPath.row].title, imageUrl: zoneCells[indexPath.row].icon, id: indexPath.row)
+        let imageUrlString = "https://capstoneimagebucket.s3.us-east-2.amazonaws.com/images/\(String(indexPath.row))/\(String(indexPath.row))/image.jpg"
+        cell.configureCell(title: zoneCells[indexPath.row].title, imageUrl: imageUrlString, id: indexPath.row)
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        pushDetailZoneViewController(valve: Valve(id: "1", zoneName: "Front Yard", imageUrl: "frontyard", latitude: 2.01, longitude: 2.01, receiverId: "123", schedules: []))
+        
+        pushDetailZoneViewController(valve: Valve(id: String(indexPath.row), zoneName: "Front Yard", imageUrl: "frontyard", latitude: 2.01, longitude: 2.01, receiverId: String(indexPath.row), schedules: []))
     }
     
     

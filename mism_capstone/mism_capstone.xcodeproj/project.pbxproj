@@ -38,6 +38,8 @@
 		F36C75B223C64602009BDA73 /* ZoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36C75B123C64602009BDA73 /* ZoneViewController.swift */; };
 		F36C75B523C64A10009BDA73 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36C75B423C64A10009BDA73 /* AccountViewController.swift */; };
 		F36C75B723C64A50009BDA73 /* AccountViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F36C75B623C64A50009BDA73 /* AccountViewController.storyboard */; };
+		F36E64D1242AAB8300AB9EB3 /* CameraHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36E64D0242AAB8300AB9EB3 /* CameraHandler.swift */; };
+		F36E64D3242BD07800AB9EB3 /* ImageData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36E64D2242BD07800AB9EB3 /* ImageData.swift */; };
 		F373FA1D24156CD60010F91F /* awsconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = F373FA1C24156CD60010F91F /* awsconfiguration.json */; };
 		F3F41BCA23DE408400F2D596 /* +UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F41BC923DE408400F2D596 /* +UIImageView.swift */; };
 		F3F41BCC23DE555E00F2D596 /* ScheduleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F41BCB23DE555E00F2D596 /* ScheduleTableViewCell.swift */; };
@@ -97,6 +99,8 @@
 		F36C75B123C64602009BDA73 /* ZoneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoneViewController.swift; sourceTree = "<group>"; };
 		F36C75B423C64A10009BDA73 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		F36C75B623C64A50009BDA73 /* AccountViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AccountViewController.storyboard; sourceTree = "<group>"; };
+		F36E64D0242AAB8300AB9EB3 /* CameraHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraHandler.swift; sourceTree = "<group>"; };
+		F36E64D2242BD07800AB9EB3 /* ImageData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageData.swift; sourceTree = "<group>"; };
 		F373FA1C24156CD60010F91F /* awsconfiguration.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = awsconfiguration.json; sourceTree = "<group>"; };
 		F3F41BC923DE408400F2D596 /* +UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "+UIImageView.swift"; sourceTree = "<group>"; };
 		F3F41BCB23DE555E00F2D596 /* ScheduleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleTableViewCell.swift; sourceTree = "<group>"; };
@@ -160,6 +164,7 @@
 			children = (
 				F32B7B5123D00DBB007114B7 /* Valve.swift */,
 				F32B7B5323D00DC6007114B7 /* Schedule.swift */,
+				F36E64D2242BD07800AB9EB3 /* ImageData.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -207,6 +212,7 @@
 				F32BEDC723C38C5F00E1C50E /* mism_capstone.xcdatamodeld */,
 				F31950A423F36293001B5918 /* AlertService.swift */,
 				D44A5A292404419B0043FBCC /* LogInHelper.swift */,
+				F36E64D0242AAB8300AB9EB3 /* CameraHandler.swift */,
 			);
 			path = mism_capstone;
 			sourceTree = "<group>";
@@ -513,7 +519,9 @@
 				F32B7B5923D01884007114B7 /* SettingsViewController.swift in Sources */,
 				F36C75B523C64A10009BDA73 /* AccountViewController.swift in Sources */,
 				F32BEDE923C38F8400E1C50E /* +UIStackView.swift in Sources */,
+				F36E64D3242BD07800AB9EB3 /* ImageData.swift in Sources */,
 				F32B7B5223D00DBB007114B7 /* Valve.swift in Sources */,
+				F36E64D1242AAB8300AB9EB3 /* CameraHandler.swift in Sources */,
 				F32B7B5423D00DC6007114B7 /* Schedule.swift in Sources */,
 				F32BEDEB23C38F8900E1C50E /* +UIStoryboard.swift in Sources */,
 				F3F41BCA23DE408400F2D596 /* +UIImageView.swift in Sources */,
