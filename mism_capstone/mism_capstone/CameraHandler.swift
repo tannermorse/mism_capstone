@@ -22,6 +22,7 @@ class CameraHandler: NSObject {
             let myPickerController = UIImagePickerController()
             myPickerController.delegate = self
             myPickerController.sourceType = .camera
+            myPickerController.allowsEditing = true
             currentVC.present(myPickerController, animated: true, completion: nil)
         }
         
@@ -32,6 +33,7 @@ class CameraHandler: NSObject {
             let myPickerController = UIImagePickerController()
             myPickerController.delegate = self
             myPickerController.sourceType = .photoLibrary
+            myPickerController.allowsEditing = true
             currentVC.present(myPickerController, animated: true, completion: nil)
         }
     }
