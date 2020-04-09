@@ -163,23 +163,27 @@ class ScheduleController {
         return tempSchedule
     }
     
-    func addSchedule(schedule: Schedule) {
+    func addSchedule(schedule: Schedule, completion: @escaping (Bool) -> Void) {
         schedules.append(schedule)
-        if let url = URL(string: "https://0z02zemtz2.execute-api.us-east-2.amazonaws.com/Development/controllers/\(schedule.controller_id!)/schedules") {
-            
-            var request = URLRequest(url: url, timeoutInterval: 10)
-            request.httpMethod = "POST"
-            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-            request.httpBody = updateScheduledDays(schedule: schedule).encodedJsonBody()
-            request.addValue("eyJraWQiOiJESlRHU2UrMnVsMFVKdkRQV2c1Y2Z5QUk5aUpocUNEaGhjdGtMNXBGVzdrPSIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiJlYTA4NDhjNi05YmM4LTRjMTMtOGVhNS1jNjFiYjgyMDMyOGYiLCJhdWQiOiI0OGE2YzkxYXU2YWEzaWlrbWthYzZzdW0zaCIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJldmVudF9pZCI6IjU2ZjQ2YzAxLTc2YjAtNDUwNS05NGEyLTgyOWE5N2Y5YzliOCIsInRva2VuX3VzZSI6ImlkIiwiYXV0aF90aW1lIjoxNTg2NDYwNDY2LCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAudXMtZWFzdC0yLmFtYXpvbmF3cy5jb21cL3VzLWVhc3QtMl9Ddms2cGZreVgiLCJjb2duaXRvOnVzZXJuYW1lIjoiZWEwODQ4YzYtOWJjOC00YzEzLThlYTUtYzYxYmI4MjAzMjhmIiwiZXhwIjoxNTg2NDY0MDY2LCJpYXQiOjE1ODY0NjA0NjYsImVtYWlsIjoicGFya2VyZ2Jyb25zb25AZ21haWwuY29tIn0.GiEPX7HdJR_eeZlPKWBQsh9i-qTjtEMI4FpuAWQ55ZfzCXKAvFHjYkvxGWYKsXwGjjoDcxGxDEfToX35bVsAcH58IerPASOofe5sj_lWeKTFoNRR6BAxkY7Xs0IwIzmpc-8_2cTgFHeu024SND9DlyTdHg3YAvyEdO2_0UoCv6AWvwKW-GRuTI52IUaiLEaRMyKgtl6cQXxT_eZ3-UTjKCoWowBL0hSyiMy9Fph6QsEhKXrjt-jOpwrRN68WV91X3XUKUmcm72zMdKCHLSPnJbSSpOjLSDWmRFpASeSeztdUt-6K_ncngN68Csrh85R4dKFyhyM127-g0RiR0wYUXA", forHTTPHeaderField: "Authorizer")
-            let task = URLSession.shared.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
-                if let r = response as? HTTPURLResponse {
-                    // do something like a fading pop up that says you schedule was adding
-                    print(r.statusCode)
-                }
-            })
-            task.resume()
-            
+        
+        if let token = UserDefaults.standard.string(forKey: "authToken") {
+            if let url = URL(string: "https://0z02zemtz2.execute-api.us-east-2.amazonaws.com/Development/controllers/\(schedule.controller_id!)/schedules") {
+                
+                var request = URLRequest(url: url, timeoutInterval: 10)
+                request.httpMethod = "POST"
+                request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+                request.httpBody = updateScheduledDays(schedule: schedule).encodedJsonBody()
+                request.addValue("token", forHTTPHeaderField: "Authorizer")
+                let task = URLSession.shared.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
+                    if let r = response as? HTTPURLResponse {
+                        // do something like a fading pop up that says you schedule was adding
+                        print(r.statusCode)
+                        r.statusCode != 200 ? completion(false) : completion(true)
+                    }
+                })
+                task.resume()
+                
+            }
         }
     }
     

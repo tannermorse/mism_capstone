@@ -45,8 +45,18 @@ class EditScheduleViewController: UIViewController, StoryboardInstantiatable {
     
     @objc func donePressed() {
         if self.isAddingSchedule {
-            ScheduleController.shared.addSchedule(schedule: schedule)
-            dismissView()
+            ScheduleController.shared.addSchedule(schedule: schedule) { (success) in
+                DispatchQueue.main.async() {
+                    if !success {
+                        if let navControl = self.navigationController {
+                            LogInHelper.shared.signOut(navController: navControl)
+                        }
+                        
+                    } else {
+                        self.dismissView()
+                    }
+                }
+            }
         } else {
             //call api to change everything on backend
             ScheduleController.shared.updateScheduleById(schedule: schedule)

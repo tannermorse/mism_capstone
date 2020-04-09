@@ -15,14 +15,19 @@ class LogInHelper {
     static let shared = LogInHelper()
     
     func showSignIn(navController: UINavigationController){
+        
         if !AWSSignInManager.sharedInstance().isLoggedIn {
             AWSAuthUIViewController.presentViewController(with: navController, configuration: buildUIConfig(), completionHandler: {
                     (provider: AWSSignInProvider, error: Error?) in
                     if error != nil {
                         print("Error occurred: \(String(describing: error))")
                     } else {
-                        print("Logged in with provider: \(provider.identityProviderName) with Token: \(provider.token())")
-                        navController.dismiss(animated: true, completion: nil)
+                        //print("Logged in with provider: \(provider.identityProviderName) with Token: \(provider.token().result)")
+                        if (provider.token().result as String?) != nil {
+                            UserDefaults.standard.set(provider.token().result, forKey: "authToken")
+                        }
+                    
+                        navController.topViewController?.dismiss(animated: true, completion: nil)
                     }
             })
         } else {
