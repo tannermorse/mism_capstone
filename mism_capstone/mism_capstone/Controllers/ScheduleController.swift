@@ -173,7 +173,7 @@ class ScheduleController {
                 request.httpMethod = "POST"
                 request.addValue("application/json", forHTTPHeaderField: "Content-Type")
                 request.httpBody = updateScheduledDays(schedule: schedule).encodedJsonBody()
-                request.addValue("token", forHTTPHeaderField: "Authorizer")
+                request.addValue(token, forHTTPHeaderField: "Authorizer")
                 let task = URLSession.shared.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
                     if let r = response as? HTTPURLResponse {
                         // do something like a fading pop up that says you schedule was adding
