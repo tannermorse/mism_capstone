@@ -166,6 +166,7 @@ class ScheduleController {
     func addSchedule(schedule: Schedule, completion: @escaping (Bool) -> Void) {
         schedules.append(schedule)
         
+        //checking that the user token is stored in UserDefaults
         if let token = UserDefaults.standard.string(forKey: "authToken") {
             if let url = URL(string: "https://0z02zemtz2.execute-api.us-east-2.amazonaws.com/Development/controllers/\(schedule.controller_id!)/schedules") {
                 
