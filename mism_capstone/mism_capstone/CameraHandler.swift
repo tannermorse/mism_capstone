@@ -90,7 +90,7 @@ class CameraHandler: NSObject {
         return img
     }
     
-    func uploadImageToS3(image: UIImage, controllerId: String, valveId: String) {
+    func uploadImageToS3(image: UIImage, controllerId: String, valveId: Int) {
         if let url = URL(string: "https://0z02zemtz2.execute-api.us-east-2.amazonaws.com/Development/images") {
             
             var request = URLRequest(url: url, timeoutInterval: 10)
@@ -99,11 +99,10 @@ class CameraHandler: NSObject {
             let path = "\(controllerId)/\(valveId)/image.jpg"
 //            let path = "/2/2/image.jpg"
 
-            print(path)
             request.httpBody = ImageData(image:"\(imageTobase64(image: image))", imagePath: path).encodedJsonBody()
 //            request.httpBody = ImageData(image:"imageData", imagePath: path).encodedJsonBody()
 
-            print(request.httpBody?.prettyPrintedJSONString)
+    
             let task = URLSession.shared.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
                 if let r = response as? HTTPURLResponse {
                     // do something like a fading pop up that says you schedule was adding
@@ -140,13 +139,3 @@ extension UIImage {
     var lowQualityJPEGNSData:NSData     { return self.jpegData(compressionQuality: 0.25)! as NSData}
     var lowestQualityJPEGNSData:NSData  { return self.jpegData(compressionQuality: 0.0)! as NSData }
       }
-
-extension Data {
-    var prettyPrintedJSONString: NSString? {
-        guard let object = try? JSONSerialization.jsonObject(with: self, options: []),
-              let data = try? JSONSerialization.data(withJSONObject: object, options: [.prettyPrinted]),
-              let prettyPrintedString = NSString(data: data, encoding: String.Encoding.utf8.rawValue) else { return nil }
-
-        return prettyPrintedString
-    }
-}
