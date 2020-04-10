@@ -40,6 +40,10 @@
 		F36C75B723C64A50009BDA73 /* AccountViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F36C75B623C64A50009BDA73 /* AccountViewController.storyboard */; };
 		F36E64D1242AAB8300AB9EB3 /* CameraHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36E64D0242AAB8300AB9EB3 /* CameraHandler.swift */; };
 		F36E64D3242BD07800AB9EB3 /* ImageData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36E64D2242BD07800AB9EB3 /* ImageData.swift */; };
+		F36E653C243A372500AB9EB3 /* ValveSelectionViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F36E653B243A372500AB9EB3 /* ValveSelectionViewController.storyboard */; };
+		F36E653E243A373D00AB9EB3 /* ValveSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36E653D243A373D00AB9EB3 /* ValveSelectionViewController.swift */; };
+		F36E6562243F814600AB9EB3 /* Data+PrettyPrintedJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36E6561243F814600AB9EB3 /* Data+PrettyPrintedJson.swift */; };
+		F36E6564243F834D00AB9EB3 /* Receiver.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36E6563243F834D00AB9EB3 /* Receiver.swift */; };
 		F373FA1D24156CD60010F91F /* awsconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = F373FA1C24156CD60010F91F /* awsconfiguration.json */; };
 		F3F41BCA23DE408400F2D596 /* +UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F41BC923DE408400F2D596 /* +UIImageView.swift */; };
 		F3F41BCC23DE555E00F2D596 /* ScheduleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F41BCB23DE555E00F2D596 /* ScheduleTableViewCell.swift */; };
@@ -101,6 +105,10 @@
 		F36C75B623C64A50009BDA73 /* AccountViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AccountViewController.storyboard; sourceTree = "<group>"; };
 		F36E64D0242AAB8300AB9EB3 /* CameraHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraHandler.swift; sourceTree = "<group>"; };
 		F36E64D2242BD07800AB9EB3 /* ImageData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageData.swift; sourceTree = "<group>"; };
+		F36E653B243A372500AB9EB3 /* ValveSelectionViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ValveSelectionViewController.storyboard; sourceTree = "<group>"; };
+		F36E653D243A373D00AB9EB3 /* ValveSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValveSelectionViewController.swift; sourceTree = "<group>"; };
+		F36E6561243F814600AB9EB3 /* Data+PrettyPrintedJson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+PrettyPrintedJson.swift"; sourceTree = "<group>"; };
+		F36E6563243F834D00AB9EB3 /* Receiver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Receiver.swift; sourceTree = "<group>"; };
 		F373FA1C24156CD60010F91F /* awsconfiguration.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = awsconfiguration.json; sourceTree = "<group>"; };
 		F3F41BC923DE408400F2D596 /* +UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "+UIImageView.swift"; sourceTree = "<group>"; };
 		F3F41BCB23DE555E00F2D596 /* ScheduleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleTableViewCell.swift; sourceTree = "<group>"; };
@@ -165,6 +173,7 @@
 				F32B7B5123D00DBB007114B7 /* Valve.swift */,
 				F32B7B5323D00DC6007114B7 /* Schedule.swift */,
 				F36E64D2242BD07800AB9EB3 /* ImageData.swift */,
+				F36E6563243F834D00AB9EB3 /* Receiver.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -235,6 +244,7 @@
 				F32BEDEC23C38F8C00E1C50E /* +UIViewAnchor.swift */,
 				F32B7B5523D016A4007114B7 /* +UINavigationBar.swift */,
 				F3F41BC923DE408400F2D596 /* +UIImageView.swift */,
+				F36E6561243F814600AB9EB3 /* Data+PrettyPrintedJson.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -270,6 +280,7 @@
 		F36C75AA23C39C6F009BDA73 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				F36E653A243A36E100AB9EB3 /* ValveSelectionControllerScene */,
 				F3F41BD223E0CFB200F2D596 /* WhenViewControllerScene */,
 				F3F41BCD23E092EA00F2D596 /* EditScheduleScene */,
 				F32B7B5723D0185C007114B7 /* SettingsViewControllerScene */,
@@ -308,6 +319,15 @@
 				F36C75B623C64A50009BDA73 /* AccountViewController.storyboard */,
 			);
 			path = AccountViewControllerScene;
+			sourceTree = "<group>";
+		};
+		F36E653A243A36E100AB9EB3 /* ValveSelectionControllerScene */ = {
+			isa = PBXGroup;
+			children = (
+				F36E653B243A372500AB9EB3 /* ValveSelectionViewController.storyboard */,
+				F36E653D243A373D00AB9EB3 /* ValveSelectionViewController.swift */,
+			);
+			path = ValveSelectionControllerScene;
 			sourceTree = "<group>";
 		};
 		F3F41BCD23E092EA00F2D596 /* EditScheduleScene */ = {
@@ -413,6 +433,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F32B7B5B23D0188E007114B7 /* SettingsViewController.storyboard in Resources */,
+				F36E653C243A372500AB9EB3 /* ValveSelectionViewController.storyboard in Resources */,
 				F36C75A923C39940009BDA73 /* ScheduleViewController.storyboard in Resources */,
 				F32BEDCE23C38C6100E1C50E /* LaunchScreen.storyboard in Resources */,
 				F3F41BD423E0CFE500F2D596 /* WhenViewController.storyboard in Resources */,
@@ -507,9 +528,12 @@
 				F32BEDC923C38C5F00E1C50E /* mism_capstone.xcdatamodeld in Sources */,
 				F3381D2123DE27590069E4BE /* ValveController.swift in Sources */,
 				F3F41BD623E0D00A00F2D596 /* WhenViewController.swift in Sources */,
+				F36E653E243A373D00AB9EB3 /* ValveSelectionViewController.swift in Sources */,
+				F36E6562243F814600AB9EB3 /* Data+PrettyPrintedJson.swift in Sources */,
 				F3381D2323DE33170069E4BE /* ScheduleController.swift in Sources */,
 				F32BEDE723C38F8000E1C50E /* +UIColor.swift in Sources */,
 				F32BEDED23C38F8C00E1C50E /* +UIViewAnchor.swift in Sources */,
+				F36E6564243F834D00AB9EB3 /* Receiver.swift in Sources */,
 				F31950A523F36293001B5918 /* AlertService.swift in Sources */,
 				F32B7B5623D016A4007114B7 /* +UINavigationBar.swift in Sources */,
 				F3F41BCC23DE555E00F2D596 /* ScheduleTableViewCell.swift in Sources */,

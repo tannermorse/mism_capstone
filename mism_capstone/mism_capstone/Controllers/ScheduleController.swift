@@ -18,8 +18,8 @@ class ScheduleController {
     
     init() {}
     
-    func getSchedulesByValveId(id: String) -> [Schedule] {
-        return schedules.filter { $0.valveId == id }
+    func getSchedulesByValveId(id: Int) -> [Schedule] {
+        return schedules.filter { $0.valveIds.contains(id) }
     }
     
     func addScheduleToValve(valveIds: [String], minute: Int, hour: Int, AmOrPm: String) {
@@ -30,7 +30,6 @@ class ScheduleController {
         let session = URLSession.shared
         var request = URLRequest(url: URL(string: "https://0z02zemtz2.execute-api.us-east-2.amazonaws.com/Development/controllers/\(controllerId)/schedules/\(scheduleId)")!,timeoutInterval: 10)
         request.httpMethod = "DELETE"
-        
         let task = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
             if error != nil {
                 print(error!)
@@ -128,6 +127,15 @@ class ScheduleController {
             } else {
                 do {
                     self.schedules = try JSONDecoder().decode([Schedule].self, from: data!)
+                    for (index, schedule) in self.schedules.enumerated() {
+                        ValveController.shared.getValvesBySchedule(controllerId: controllerId, scheduleId: schedule.scheduleId!) { (valves) in
+                            for valve in valves {
+                                if let id = valve.id {
+                                    self.schedules[index].valveIds.append(id)
+                                }
+                            }
+                        }
+                    }
                 } catch {
                     print("could not serialize schedule data")
                 }
@@ -138,7 +146,7 @@ class ScheduleController {
     }
     
     func updateScheduledDays(schedule: Schedule) -> Schedule {
-        var tempSchedule = Schedule(controller_id: schedule.controller_id!, scheduleName: schedule.scheduleName ?? "", valveId: schedule.valveId!, startTime: schedule.startTime!, daysOfweek: schedule.daysOfweek, duration: schedule.duration!, enabled: schedule.enabled)
+        var tempSchedule = Schedule(controller_id: schedule.controller_id!, scheduleName: schedule.scheduleName ?? "", valveIds: schedule.valveIds, startTime: schedule.startTime!, daysOfweek: schedule.daysOfweek, duration: schedule.duration!, enabled: schedule.enabled)
         
         for i in schedule.daysOfweek {
             switch i {

@@ -129,11 +129,12 @@ extension EditScheduleViewController: UITableViewDelegate, UITableViewDataSource
             }
             cell.accessoryType = .disclosureIndicator
         } else if indexPath.section == 2 {
-            if let id =  schedule?.valveId {
-                if id == "" {
+            if let ids = schedule?.valveIds {
+                if ids.count == 0 {
                      cell.textLabel?.text = "No valves"
                 } else {
-                     cell.textLabel?.text = id
+                    let stringArray = ids.map { String($0) }
+                    cell.textLabel?.text = stringArray.joined(separator: ", ")
                 }
             }
         } else if indexPath.section == 3 {
@@ -157,6 +158,9 @@ extension EditScheduleViewController: UITableViewDelegate, UITableViewDataSource
         } else if indexPath.section == 3 {
             //TODO: push to add valve page
             print("add valve")
+            let vc = ValveSelectionViewController.storyboardInitialViewController()
+            vc.selectedValves = schedule.valveIds ?? []
+            navigationController?.pushViewController(vc, animated: true)
         } else if indexPath.section == 4 {
             print("test schedule")
             testSchedule(scheduleId: String(schedule.scheduleId!))
