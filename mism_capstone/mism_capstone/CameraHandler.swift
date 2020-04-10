@@ -91,26 +91,30 @@ class CameraHandler: NSObject {
     }
     
     func uploadImageToS3(image: UIImage, controllerId: String, valveId: Int) {
-        if let url = URL(string: "https://0z02zemtz2.execute-api.us-east-2.amazonaws.com/Development/images") {
-            
-            var request = URLRequest(url: url, timeoutInterval: 10)
-            request.httpMethod = "POST"
-            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-            let path = "\(controllerId)/\(valveId)/image.jpg"
-//            let path = "/2/2/image.jpg"
+        
+        if let token = UserDefaults.standard.string(forKey: "authToken"){
+            if let url = URL(string: "https://0z02zemtz2.execute-api.us-east-2.amazonaws.com/Development/images") {
+                
+                var request = URLRequest(url: url, timeoutInterval: 10)
+                request.httpMethod = "POST"
+                request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+                request.addValue(token, forHTTPHeaderField: "Authorizer")
+                let path = "\(controllerId)/\(valveId)/image.jpg"
+                //let path = "/2/2/image.jpg"
 
-            request.httpBody = ImageData(image:"\(imageTobase64(image: image))", imagePath: path).encodedJsonBody()
-//            request.httpBody = ImageData(image:"imageData", imagePath: path).encodedJsonBody()
+                request.httpBody = ImageData(image:"\(imageTobase64(image: image))", imagePath: path).encodedJsonBody()
+                //request.httpBody = ImageData(image:"imageData", imagePath: path).encodedJsonBody()
 
-    
-            let task = URLSession.shared.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
-                if let r = response as? HTTPURLResponse {
-                    // do something like a fading pop up that says you schedule was adding
-                    print(r.statusCode)
-                }
-            })
-            task.resume()
-            
+        
+                let task = URLSession.shared.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
+                    if let r = response as? HTTPURLResponse {
+                        // do something like a fading pop up that says you schedule was adding
+                        print(r.statusCode)
+                    }
+                })
+                task.resume()
+                
+            }
         }
     }
 

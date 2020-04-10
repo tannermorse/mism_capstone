@@ -28,19 +28,24 @@ class ScheduleController {
     }
     
     func deleteSchedule(controllerId: Int, scheduleId: Int) {
-        let session = URLSession.shared
-        var request = URLRequest(url: URL(string: "https://0z02zemtz2.execute-api.us-east-2.amazonaws.com/Development/controllers/\(controllerId)/schedules/\(scheduleId)")!,timeoutInterval: 10)
-        request.httpMethod = "DELETE"
-        let task = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
-            if error != nil {
-                print(error!)
-            } else {
-                if let httpResponse = response as? HTTPURLResponse {
-                    print("Delete Status code: \(httpResponse.statusCode)")
+        
+        if let token = UserDefaults.standard.string(forKey: "authToken") {
+            
+            let session = URLSession.shared
+            var request = URLRequest(url: URL(string: "https://0z02zemtz2.execute-api.us-east-2.amazonaws.com/Development/controllers/\(controllerId)/schedules/\(scheduleId)")!,timeoutInterval: 10)
+            request.httpMethod = "DELETE"
+            request.addValue(token, forHTTPHeaderField: "Authorizer")
+            let task = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
+                if error != nil {
+                    print(error!)
+                } else {
+                    if let httpResponse = response as? HTTPURLResponse {
+                        print("Delete Status code: \(httpResponse.statusCode)")
+                    }
                 }
-            }
-        })
+            })
             task.resume()
+        }
     }
     
     func setActiveState(scheduleId: String) {
@@ -172,10 +177,10 @@ class ScheduleController {
     }
     
     func addSchedule(schedule: Schedule, completion: @escaping (Bool) -> Void) {
-        schedules.append(schedule)
         
         //checking that the user token is stored in UserDefaults
         if let token = UserDefaults.standard.string(forKey: "authToken") {
+            schedules.append(schedule)
             if let url = URL(string: "https://0z02zemtz2.execute-api.us-east-2.amazonaws.com/Development/controllers/\(schedule.controller_id!)/schedules") {
                 
                 var request = URLRequest(url: url, timeoutInterval: 10)
@@ -197,23 +202,24 @@ class ScheduleController {
     }
     
     func updateSchedule(schedule: Schedule) {
-        if let url = URL(string: "https://0z02zemtz2.execute-api.us-east-2.amazonaws.com/Development/controllers/\(schedule.controller_id!)/schedules/\(schedule.scheduleId!)") {
-            
-            var request = URLRequest(url: url, timeoutInterval: 10)
-            request.httpMethod = "PUT"
-            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-            request.httpBody = updateScheduledDays(schedule: schedule).encodedJsonBody()
-            
-            
-            
-            let task = URLSession.shared.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
-                if let r = response as? HTTPURLResponse {
-                    // do something like a fading pop up that says you schedule was adding
-                    print(r.statusCode)
-                }
-            })
-            task.resume()
-            
+        if let token = UserDefaults.standard.string(forKey: "authToken"){
+            if let url = URL(string: "https://0z02zemtz2.execute-api.us-east-2.amazonaws.com/Development/controllers/\(schedule.controller_id!)/schedules/\(schedule.scheduleId!)") {
+                
+                var request = URLRequest(url: url, timeoutInterval: 10)
+                request.httpMethod = "PUT"
+                request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+                request.httpBody = updateScheduledDays(schedule: schedule).encodedJsonBody()
+                request.addValue(token, forHTTPHeaderField: "Authorizer")
+                
+                let task = URLSession.shared.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
+                    if let r = response as? HTTPURLResponse {
+                        // do something like a fading pop up that says you schedule was adding
+                        print(r.statusCode)
+                    }
+                })
+                task.resume()
+                
+            }
         }
     }
     
