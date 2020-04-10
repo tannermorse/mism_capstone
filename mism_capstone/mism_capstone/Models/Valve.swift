@@ -43,6 +43,27 @@ struct Valve: Codable {
         }
     }
     
+    func encodedJsonBody() -> Data {
+        let jsonEncoder = JSONEncoder()
+        do {
+            let jsonData = try jsonEncoder.encode(self)
+            return jsonData
+        } catch {
+            print(error)
+        }
+        return Data()
+    }
+    
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(id, forKey: .id)
+        try container.encode(receiverId, forKey: .receiverId)
+        try container.encode(status, forKey: .status)
+        try container.encode(valveName, forKey: .valveName)
+        try container.encode(updatedAt, forKey: .updatedAt)
+        try container.encodeIfPresent(createdAt, forKey: .createdAt)
+    }
+    
     enum CodingKeys: String, CodingKey {
         case id = "valve_id"
         case receiverId = "receiver_id"

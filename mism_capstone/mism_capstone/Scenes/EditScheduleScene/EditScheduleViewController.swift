@@ -62,6 +62,9 @@ class EditScheduleViewController: UIViewController, StoryboardInstantiatable {
             ScheduleController.shared.updateScheduleById(schedule: schedule)
             dismissView()
         }
+        if schedule.valves.count > 0 {
+            ValveController.shared.addValvesToSchedule(controllerId: 1, scheduleId: schedule!.scheduleId!, valves: schedule!.valves)
+        }
     }
 
 }
@@ -99,7 +102,9 @@ extension EditScheduleViewController: UITableViewDelegate, UITableViewDataSource
     }
     
     @objc func switchValueChanged(sender: UISwitch) {
-        ScheduleController.shared.setActiveState(scheduleId: String(schedule!.scheduleId!))
+        if let scheduleId = schedule!.scheduleId {
+            ScheduleController.shared.setActiveState(scheduleId: String(scheduleId))
+        }
         schedule.enabled = sender.isOn
     }
     
@@ -139,11 +144,11 @@ extension EditScheduleViewController: UITableViewDelegate, UITableViewDataSource
             }
             cell.accessoryType = .disclosureIndicator
         } else if indexPath.section == 2 {
-            if let ids = schedule?.valveIds {
+            if let ids = schedule?.valves {
                 if ids.count == 0 {
                      cell.textLabel?.text = "No valves"
                 } else {
-                    let stringArray = ids.map { String($0) }
+                    let stringArray = ids.map { String($0.id!) }
                     cell.textLabel?.text = stringArray.joined(separator: ", ")
                 }
             }
@@ -169,20 +174,19 @@ extension EditScheduleViewController: UITableViewDelegate, UITableViewDataSource
             //TODO: push to add valve page
             print("add valve")
             let vc = ValveSelectionViewController.storyboardInitialViewController()
-            vc.selectedValves = schedule.valveIds ?? []
+            vc.selectedValves = schedule.valves ?? []
             navigationController?.pushViewController(vc, animated: true)
         } else if indexPath.section == 4 {
             print("test schedule")
             testSchedule(scheduleId: String(schedule.scheduleId!))
         } else if indexPath.section == 5 {
-            AlertService.shared.deleteAlert(target: self, title: "Delete \(schedule.scheduleName ?? "this schedule")?", message: "This is permanent. You will have to recreate this scheudle", completion: delete)
+            AlertService.shared.deleteAlert(target: self, title: "Delete \(schedule.scheduleName ?? "this schedule")?", message: "This is permanent. You will have to recreate this schedule", completion: delete)
         }
     }
     
     func delete() {
         //TODO: call delete schedule api
         ScheduleController.shared.deleteScheduleById(schedule: schedule)
-        ScheduleController.shared.deleteSchedule(controllerId: schedule.controller_id!, scheduleId: schedule.scheduleId!)
         self.dismissView()
     }
     

@@ -103,5 +103,35 @@ class ValveController {
         })
         task.resume()
     }
+    
+    func addValvesToSchedule(controllerId: Int, scheduleId: Int, valves: [Valve], completion: ((Bool) -> Void)? = nil) {
+        let session = URLSession.shared
+        var request = URLRequest(url: URL(string: "https://0z02zemtz2.execute-api.us-east-2.amazonaws.com/Development/controllers/\(controllerId)/schedules/\(scheduleId)/valves")!,timeoutInterval: 10)
+        request.httpMethod = "POST"
+        let encoder = JSONEncoder()
+        do {
+            request.httpBody = try encoder.encode(valves)
+        } catch {
+            print("can't encode valves")
+            print(error)
+            return
+        }
+        
+        let task = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
+            if let status = response as? HTTPURLResponse {
+                print("add valves to schedule: \(status.statusCode)")
+            }
+            if error != nil {
+                print(error!)
+            } else {
+                do {
+                    completion?(true)
+                } catch {
+                    print("could not serialize valve by schedule data")
+                }
+            }
+        })
+        task.resume()
+    }
 
 }

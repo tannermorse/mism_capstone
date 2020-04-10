@@ -11,20 +11,22 @@ import UIKit
 class ValveSelectionViewController: UITableViewController, StoryboardInstantiatable, UINavigationControllerDelegate {
     
     var valves = [Valve]()
-    var selectedValves = [Int]()
+    var selectedValves = [Valve]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Select Valves"
         navigationController?.delegate = self
-        ValveController.shared.getReceiversByController(controllerId: 1) { (ids) in
-            for i in ids {
-                ValveController.shared.getValvesByController(controllerId: 1, receiverId: i) { (valves) in
-                    for v in valves {
-                        self.valves.append(v)
-                    }
-                    DispatchQueue.main.async() {
-                        self.tableView.reloadData()
+        if valves.count == 0 {
+            ValveController.shared.getReceiversByController(controllerId: 1) { (ids) in
+                for i in ids {
+                    ValveController.shared.getValvesByController(controllerId: 1, receiverId: i) { (valves) in
+                        for v in valves {
+                            self.valves.append(v)
+                        }
+                        DispatchQueue.main.async() {
+                            self.tableView.reloadData()
+                        }
                     }
                 }
             }
@@ -34,7 +36,7 @@ class ValveSelectionViewController: UITableViewController, StoryboardInstantiata
     
     func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
         if let editVC = viewController as? EditScheduleViewController {
-            editVC.schedule.valveIds = selectedValves
+            editVC.schedule.valves = selectedValves
         }
     }
     
@@ -57,9 +59,8 @@ class ValveSelectionViewController: UITableViewController, StoryboardInstantiata
         if indexPath.section == 0 {
             cell.textLabel?.text = "No valves to show..."
         } else {
-            print(valves.count)
             cell.textLabel?.text = valves[indexPath.row].valveName!
-            if selectedValves.contains(valves[indexPath.row].id!) {
+            if selectedValves.contains(where: { $0.id! == valves[indexPath.row].id! }) {
                 cell.accessoryType = .checkmark
             } else {
                 cell.accessoryType = .none
@@ -69,10 +70,10 @@ class ValveSelectionViewController: UITableViewController, StoryboardInstantiata
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if selectedValves.contains(valves[indexPath.row].id!) {
-            selectedValves.removeAll(where: { $0 == valves[indexPath.row].id! })
+        if selectedValves.contains(where: { $0.id! == valves[indexPath.row].id! }) {
+            selectedValves.removeAll(where: { $0.id! == valves[indexPath.row].id! })
         } else {
-            selectedValves.append(valves[indexPath.row].id!)
+            selectedValves.append(valves[indexPath.row])
         }
         tableView.reloadData()
     }

@@ -22,13 +22,11 @@ class ScheduleViewController: UIViewController, StoryboardInstantiatable {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       
+
         if let navigationController = self.navigationController {
             LogInHelper.shared.showSignIn(navController: navigationController)
         }
         title = "Today's Schedule"
-        setupNotifications()
-        scheduleController.getSchedulesByController(controllerId: 1)
         currentDay = scheduleController.currentWeekday()
         schedules = scheduleController.filteredSchedulesByDay()
         navigationController?.navigationBar.setThemeTextAttributes()
@@ -45,14 +43,14 @@ class ScheduleViewController: UIViewController, StoryboardInstantiatable {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        schedules = ScheduleController.shared.filteredSchedulesByDay(currentDay)
-        tableView.reloadData()
+        setupNotifications()
+        scheduleController.getSchedulesByController(controllerId: 1)
     }
     
     @objc func reloadTableData() {
         DispatchQueue.main.sync {
-            schedules = ScheduleController.shared.filteredSchedulesByDay(currentDay)
-            tableView.reloadData()
+            self.schedules = ScheduleController.shared.filteredSchedulesByDay(self.currentDay)
+            self.tableView.reloadData()
         }
     }
     

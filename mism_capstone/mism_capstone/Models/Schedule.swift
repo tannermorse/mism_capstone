@@ -28,7 +28,7 @@ struct Schedule: Codable {
     var controller_id: Int?
     var scheduleId: Int?
     var scheduleName: String?
-    var valveIds: [Int] = []
+    var valves: [Valve] = []
     var startTime: String?
     var monday = false
     var tuesday = false
@@ -41,10 +41,10 @@ struct Schedule: Codable {
     var duration: Float?
     var enabled = true
     
-    init(controller_id: Int, scheduleName: String, valveIds: [Int], startTime: String, daysOfweek: [Int], duration: Float, enabled: Bool) {
+    init(controller_id: Int, scheduleName: String, valveIds: [Valve], startTime: String, daysOfweek: [Int], duration: Float, enabled: Bool) {
         self.controller_id = controller_id
         self.scheduleName = scheduleName
-        self.valveIds = valveIds
+        self.valves = valveIds
         self.startTime = startTime
         self.daysOfweek = daysOfweek
         self.duration = duration
@@ -57,7 +57,7 @@ struct Schedule: Codable {
             self.controller_id = try schedule.decodeIfPresent(Int.self, forKey: .controller_id)!
             self.scheduleId = try schedule.decodeIfPresent(Int.self, forKey: .scheduleId)!
 //            self.scheduleName = try schedule.decodeIfPresent(String.self, forKey: .scheduleName)
-            self.valveIds = [] //try schedule.decodeIfPresent(Int.self, forKey: .controller_id)!
+            self.valves = [] //try schedule.decodeIfPresent(Int.self, forKey: .controller_id)!
             self.startTime = try schedule.decodeIfPresent(String.self, forKey: .startTime)!
             self.duration = try schedule.decodeIfPresent(Float.self, forKey: .duration)!
             self.daysOfweek = []

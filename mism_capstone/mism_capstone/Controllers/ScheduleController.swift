@@ -20,7 +20,7 @@ class ScheduleController {
     init() {}
     
     func getSchedulesByValveId(id: Int) -> [Schedule] {
-        return schedules.filter { $0.valveIds.contains(id) }
+        return schedules.filter { $0.valves.contains(where: { $0.id! == id}) }
     }
     
     func addScheduleToValve(valveIds: [String], minute: Int, hour: Int, AmOrPm: String) {
@@ -53,15 +53,20 @@ class ScheduleController {
     }
     
     func updateScheduleById(schedule: Schedule) {
-        if let row = self.schedules.firstIndex(where: {$0.scheduleId! == schedule.scheduleId!}) {
-               schedules[row] = schedule
-            self.updateSchedule(schedule: schedule)
+        if let scheduleId = schedule.scheduleId {
+            if let row = self.schedules.firstIndex(where: {$0.scheduleId! == scheduleId}) {
+                schedules[row] = schedule
+                self.updateSchedule(schedule: schedule)
+            }
         }
     }
     
     func deleteScheduleById(schedule: Schedule) {
-        if let row = self.schedules.firstIndex(where: {$0.scheduleId! == schedule.scheduleId!}) {
-            schedules.remove(at: row)
+        if let scheduleId = schedule.scheduleId {
+            if let row = self.schedules.firstIndex(where: {$0.scheduleId! == scheduleId}) {
+                schedules.remove(at: row)
+            }
+            ScheduleController.shared.deleteSchedule(controllerId: schedule.controller_id!, scheduleId: scheduleId)
         }
     }
     
@@ -136,9 +141,7 @@ class ScheduleController {
                     for (index, schedule) in self.schedules.enumerated() {
                         ValveController.shared.getValvesBySchedule(controllerId: controllerId, scheduleId: schedule.scheduleId!) { (valves) in
                             for valve in valves {
-                                if let id = valve.id {
-                                    self.schedules[index].valveIds.append(id)
-                                }
+                                self.schedules[index].valves.append(valve)
                             }
                         }
                     }
@@ -152,7 +155,7 @@ class ScheduleController {
     }
     
     func updateScheduledDays(schedule: Schedule) -> Schedule {
-        var tempSchedule = Schedule(controller_id: schedule.controller_id!, scheduleName: schedule.scheduleName ?? "", valveIds: schedule.valveIds, startTime: schedule.startTime!, daysOfweek: schedule.daysOfweek, duration: schedule.duration!, enabled: schedule.enabled)
+        var tempSchedule = Schedule(controller_id: schedule.controller_id!, scheduleName: schedule.scheduleName ?? "", valveIds: schedule.valves, startTime: schedule.startTime!, daysOfweek: schedule.daysOfweek, duration: schedule.duration!, enabled: schedule.enabled)
         
         for i in schedule.daysOfweek {
             switch i {
@@ -214,7 +217,7 @@ class ScheduleController {
                 let task = URLSession.shared.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
                     if let r = response as? HTTPURLResponse {
                         // do something like a fading pop up that says you schedule was adding
-                        print(r.statusCode)
+                        print("update \(r.statusCode)")
                     }
                 })
                 task.resume()
