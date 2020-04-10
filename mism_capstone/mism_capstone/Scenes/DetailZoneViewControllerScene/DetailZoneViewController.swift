@@ -21,7 +21,8 @@ class DetailZoneViewController: UIViewController, StoryboardInstantiatable {
         CameraHandler.shared.presentPhotoSelectorActionSheet(vc: self)
         CameraHandler.shared.imagePickedBlock = { (image) in
             
-            CameraHandler.shared.uploadImageToS3(image: image, controllerId: self.valve!.receiverId, valveId: self.valve!.id)
+            CameraHandler.shared.uploadImageToS3(image: image, controllerId: String(self.valve!.receiverId!), valveId: self.valve!.id!)
+            print("test \(self.valve!)")
             /* get your image here */
             self.zoneImageView.image = image
         }
@@ -35,10 +36,10 @@ class DetailZoneViewController: UIViewController, StoryboardInstantiatable {
         testLabel.font = themedFont.viewLabel
         navigationController?.navigationBar.setThemeTextAttributes()
         
-        if let url = URL(string: "https://capstoneimagebucket.s3.us-east-2.amazonaws.com/images/\(valve!.receiverId)/\(valve!.id)/image.jpg") {
-               zoneImageView.load(url: url, defaultImage: UIImage(named: "launchImage")!)
+        if let url = URL(string: "https://capstoneimagebucket.s3.us-east-2.amazonaws.com/images/\(valve!.receiverId!)/\(valve!.id!)/image.jpg") {
+            zoneImageView.load(url: url, defaultImage: UIImage(named: "launchImage")!)
         }
-        
+  
         
         tableView.register(ScheduleTableViewCell.self, forCellReuseIdentifier: "ScheduleTableViewCell")
         tableView.separatorStyle = .none
@@ -60,18 +61,19 @@ class DetailZoneViewController: UIViewController, StoryboardInstantiatable {
 
 extension DetailZoneViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return valve?.schedules.count ?? 0
+//        return valve?.schedules.count ?? 0
+        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: ScheduleCell.identifier, for: indexPath) as! ScheduleTableViewCell
-        cell.configureCell(schedule: (valve?.schedules[indexPath.row])!)
+//        cell.configureCell(schedule: (valve?.schedules[indexPath.row])!)
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = EditScheduleViewController.storyboardInitialViewController()
-        vc.schedule = valve?.schedules[indexPath.row]
+//        vc.schedule = valve?.schedules[indexPath.row]
         if #available(iOS 13.0, *) {
             vc.isModalInPresentation = true
         }

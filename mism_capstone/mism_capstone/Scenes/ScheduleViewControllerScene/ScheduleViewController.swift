@@ -22,6 +22,7 @@ class ScheduleViewController: UIViewController, StoryboardInstantiatable {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+       
         if let navigationController = self.navigationController {
             LogInHelper.shared.showSignIn(navController: navigationController)
         }
@@ -102,7 +103,7 @@ extension ScheduleViewController: UITableViewDelegate, UITableViewDataSource {
             let largeConfiguration = UIImage.SymbolConfiguration(scale: .large)
             addScheduleButton.setImage(UIImage(systemName: "calendar.badge.plus", withConfiguration: largeConfiguration), for: .normal)
         } else {
-            addScheduleButton.setTitle("Add Schudule", for: .normal)
+            addScheduleButton.setTitle("Add Schedule", for: .normal)
         }
         
         addScheduleButton.addTarget(self, action: #selector(addSchedulePressed), for: .touchUpInside)
@@ -111,7 +112,7 @@ extension ScheduleViewController: UITableViewDelegate, UITableViewDataSource {
     
     @objc func addSchedulePressed() {
         //present add schdule capability
-        let newSchedule = Schedule(controller_id: 1, scheduleName: "", valveId: "", startTime: "18:00:00", daysOfweek: [currentDay], duration: 15, enabled: true)
+        let newSchedule = Schedule(controller_id: 1, scheduleName: "", valveIds: [], startTime: "18:00:00", daysOfweek: [currentDay], duration: 15, enabled: true)
         presentPresentEditScheduleController(schedule: newSchedule, isAddingSchedule: true)
         
     }
