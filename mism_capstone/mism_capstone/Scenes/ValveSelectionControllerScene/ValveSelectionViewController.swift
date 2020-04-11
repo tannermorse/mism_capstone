@@ -70,12 +70,14 @@ class ValveSelectionViewController: UITableViewController, StoryboardInstantiata
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if selectedValves.contains(where: { $0.id! == valves[indexPath.row].id! }) {
-            selectedValves.removeAll(where: { $0.id! == valves[indexPath.row].id! })
-        } else {
-            selectedValves.append(valves[indexPath.row])
+        if indexPath.section != 0 {
+            if selectedValves.contains(where: { $0.id! == valves[indexPath.row].id! }) {
+                selectedValves.removeAll(where: { $0.id! == valves[indexPath.row].id! })
+            } else {
+                selectedValves.append(valves[indexPath.row])
+            }
+            tableView.reloadData()
         }
-        tableView.reloadData()
     }
 
 }

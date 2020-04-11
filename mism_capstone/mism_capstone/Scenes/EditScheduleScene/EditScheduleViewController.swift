@@ -62,9 +62,10 @@ class EditScheduleViewController: UIViewController, StoryboardInstantiatable {
             ScheduleController.shared.updateScheduleById(schedule: schedule)
             dismissView()
         }
-        if schedule.valves.count > 0 {
-            ValveController.shared.addValvesToSchedule(controllerId: 1, scheduleId: schedule!.scheduleId!, valves: schedule!.valves)
+        if let schedId = schedule!.scheduleId {
+            ValveController.shared.addValvesToSchedule(controllerId: 1, scheduleId: schedId, valves: schedule!.valves)
         }
+        
     }
 
 }
@@ -131,7 +132,7 @@ extension EditScheduleViewController: UITableViewDelegate, UITableViewDataSource
         } else if indexPath.section == 1 {
             
             if let startTime = schedule.startTime {
-                cell.textLabel!.text = ScheduleController.shared.convertFromMilitaryTime(startTime: schedule.startTime!)
+                cell.textLabel!.text = ScheduleController.shared.convertFromMilitaryTime(startTime: startTime)
             } else {
                 cell.textLabel!.text = "Choose start time"
             }
@@ -153,7 +154,7 @@ extension EditScheduleViewController: UITableViewDelegate, UITableViewDataSource
                 }
             }
         } else if indexPath.section == 3 {
-            cell.textLabel?.text = "Add Valves To This Schedule"
+            cell.textLabel?.text = "Edit Valves For This Schedule"
             cell.textLabel?.textColor = UIColor.themeBlue()
         } else if indexPath.section == 4 {
             cell.textLabel?.text = "Test This Schedule"
@@ -174,7 +175,7 @@ extension EditScheduleViewController: UITableViewDelegate, UITableViewDataSource
             //TODO: push to add valve page
             print("add valve")
             let vc = ValveSelectionViewController.storyboardInitialViewController()
-            vc.selectedValves = schedule.valves ?? []
+            vc.selectedValves = schedule.valves
             navigationController?.pushViewController(vc, animated: true)
         } else if indexPath.section == 4 {
             print("test schedule")

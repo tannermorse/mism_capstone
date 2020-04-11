@@ -69,7 +69,6 @@ class ValveController {
             if error != nil {
                 print(error!)
             } else {
-                print(" all valves: \(data!.prettyPrintedJSONString)")
                 do {
                     valves = try JSONDecoder().decode([Valve].self, from: data!)
                     completion?(valves)
@@ -110,7 +109,8 @@ class ValveController {
         request.httpMethod = "POST"
         let encoder = JSONEncoder()
         do {
-            request.httpBody = try encoder.encode(valves)
+            let ids = valves.map { $0.id! }
+            request.httpBody = try encoder.encode(ids)
         } catch {
             print("can't encode valves")
             print(error)
@@ -123,12 +123,6 @@ class ValveController {
             }
             if error != nil {
                 print(error!)
-            } else {
-                do {
-                    completion?(true)
-                } catch {
-                    print("could not serialize valve by schedule data")
-                }
             }
         })
         task.resume()
