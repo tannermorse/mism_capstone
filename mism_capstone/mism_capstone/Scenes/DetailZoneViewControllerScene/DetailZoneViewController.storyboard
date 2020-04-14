@@ -39,8 +39,11 @@
                                     <outlet property="delegate" destination="vwN-cf-IrI" id="EWt-eu-0pQ"/>
                                 </connections>
                             </tableView>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="S5e-yO-HIc">
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="S5e-yO-HIc">
                                 <rect key="frame" x="345" y="259" width="51" height="31"/>
+                                <connections>
+                                    <action selector="changeValveState:" destination="vwN-cf-IrI" eventType="valueChanged" id="Ezc-aw-S1B"/>
+                                </connections>
                             </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Test zone" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4fC-zL-ndW">
                                 <rect key="frame" x="234" y="252" width="72.5" height="44"/>

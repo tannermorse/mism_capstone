@@ -14,8 +14,43 @@ class ValveController {
     var valves = [Valve]()
     
     
-    func switchValveState(id: String) {
+    func switchValveState(controllerId: String, receiverId: String, valveId: String, valveStatus: Bool) {
         // send to api to switch the state of the valve
+        if let token = UserDefaults.standard.string(forKey: "authToken") {
+            var component = URLComponents(string: "https://0z02zemtz2.execute-api.us-east-2.amazonaws.com/Development/controllers/\(controllerId)/receivers/\(receiverId)/valves/\(valveId)/flip")
+            component?.queryItems = [URLQueryItem(name: "valve_status", value: String(valveStatus))]
+            
+            if let url = component?.url {
+                print(url)
+                let session = URLSession.shared
+                var request = URLRequest(url: url, timeoutInterval: 10)
+                request.httpMethod = "POST"
+                request.addValue(token, forHTTPHeaderField: "Authorizer")
+                let task = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
+                    if let status = response as? HTTPURLResponse {
+                        print("change valve state: \(status.statusCode)")
+                    }
+                    if error != nil {
+                        print(error!)
+                    }
+                })
+                task.resume()
+            }
+//            let session = URLSession.shared
+//            var request = URLRequest(url: URL(string: "https://0z02zemtz2.execute-api.us-east-2.amazonaws.com/Development/controllers/\(controllerId)/receivers/\(receiverId)/valves/\(valveId)/flip?valve_status=\(valveStatus)")!,timeoutInterval: 10)
+//            request.httpMethod = "POST"
+//            request.addValue(token, forHTTPHeaderField: "Authorizer")
+//
+//            let task = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
+//                if let status = response as? HTTPURLResponse {
+//                    print("change valve state: \(status.statusCode)")
+//                }
+//                if error != nil {
+//                    print(error!)
+//                }
+//            })
+//            task.resume()
+        }
     }
     
     func updateImage(image: Data) {

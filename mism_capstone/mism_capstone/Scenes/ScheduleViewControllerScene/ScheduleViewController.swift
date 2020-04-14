@@ -42,8 +42,11 @@ class ScheduleViewController: UIViewController, StoryboardInstantiatable {
         NotificationCenter.default.removeObserver(self, name: .scheduleUpdate, object: nil)
     }
     
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         setupNotifications()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
         scheduleController.getSchedulesByController(controllerId: 1)
     }
     

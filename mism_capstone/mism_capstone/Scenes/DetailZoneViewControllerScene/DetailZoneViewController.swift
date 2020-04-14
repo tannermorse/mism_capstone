@@ -16,6 +16,11 @@ class DetailZoneViewController: UIViewController, StoryboardInstantiatable {
     
     @IBOutlet weak var testSwitch: UISwitch!
     @IBOutlet weak var testLabel: UILabel!
+    @IBAction func changeValveState(_ sender: UISwitch) {
+        if let valveId = valve?.id {
+            ValveController.shared.switchValveState(controllerId: String(1), receiverId: String(valve!.receiverId!), valveId: String(valveId), valveStatus: sender.isOn)
+        }
+    }
     
     @IBAction func addImagePressed(sender: UIButton) {
         CameraHandler.shared.presentPhotoSelectorActionSheet(vc: self)
@@ -35,6 +40,7 @@ class DetailZoneViewController: UIViewController, StoryboardInstantiatable {
         scheduleLabel.font = themedFont.titleLabel
         testLabel.font = themedFont.viewLabel
         navigationController?.navigationBar.setThemeTextAttributes()
+        
         
         if let url = URL(string: "https://capstoneimagebucket.s3.us-east-2.amazonaws.com/images/\(valve!.receiverId!)/\(valve!.id!)/image.jpg") {
             zoneImageView.load(url: url, defaultImage: UIImage(named: "launchImage")!)
